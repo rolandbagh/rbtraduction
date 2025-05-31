@@ -1,833 +1,510 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Roland Baghnyan - Professional Translation Services</title>
-    <meta name="description" id="page-description" content="Professional translation and interpreting services with 20+ years experience. Specialized in legal, medical, and NGO documentation.">
-    <link rel="alternate" hreflang="en" href="https://rolandbagh.github.io/roland-baghnyan-rbtraduction/">
-    <link rel="alternate" hreflang="fr" href="https://rolandbagh.github.io/roland-baghnyan-rbtraduction/fr">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7; /* Slightly increased for Open Sans */
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            overflow-x: hidden; /* Prevent horizontal scroll from subtle transforms */
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-weight: 700; /* Default bold for Montserrat */
-        }
-
-        .language-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.98); /* Slightly more opaque */
-            backdrop-filter: blur(10px);
-            border-radius: 30px; /* More rounded */
-            padding: 10px; /* Increased padding */
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
-            display: flex;
-            gap: 8px; /* Increased gap */
-        }
-
-        .lang-btn {
-            padding: 10px 18px; /* Increased padding */
-            border: none;
-            border-radius: 25px; /* More rounded */
-            cursor: pointer;
-            font-weight: 600; /* Bolder for Open Sans */
-            font-size: 14px;
-            transition: all 0.3s ease;
-            background: transparent;
-            color: #555; /* Slightly darker for better contrast */
-        }
-
-        .lang-btn.active {
-            background: #667eea;
-            color: white;
-            transform: translateY(0); /* Remove previous transform, shadow handles lift */
-            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5);
-        }
-
-        .lang-btn:hover:not(.active) {
-            background: #e9e9f0; /* Lighter hover */
-            color: #333;
-            transform: translateY(-1px);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Section Base Styles */
-        .section {
-            padding: 80px 0;
-        }
-        .section-title {
-            font-size: 2.8rem;
-            margin-bottom: 40px;
-            font-weight: 800; /* Extra bold for section titles */
-            text-align: center;
-        }
-        
-        .hero {
-            background: rgba(255, 255, 255, 0.05); /* More subtle glassmorphism */
-            backdrop-filter: blur(15px);
-            margin: 100px 20px 60px; /* Consistent side margin, more top */
-            border-radius: 25px;
-            padding: 80px 0; /* Increased padding */
-            text-align: center;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .hero h1 {
-            font-size: 3.8rem; /* Slightly larger */
-            margin-bottom: 25px;
-            font-weight: 800;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.35);
-        }
-
-        .hero p {
-            font-size: 1.4rem; /* Slightly larger */
-            margin-bottom: 40px; /* More space before CTA */
-            opacity: 0.95;
-            max-width: 850px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 400; /* Regular weight for Open Sans */
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
-            color: white;
-            padding: 18px 35px; /* More padding */
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700; /* Bold for Montserrat */
-            font-size: 1.15rem; /* Slightly larger */
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.35);
-            transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-4px) scale(1.02); /* More pronounced hover */
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.45);
-        }
-
-        .services-section { /* Renamed for clarity */
-            padding: 80px 0; /* Standard section padding */
-        }
-        
-        .services-grid { /* New class for the grid itself */
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); /* Slightly adjusted minmax */
-            gap: 35px; /* Increased gap */
-        }
-
-        .service-card {
-            background: rgba(255, 255, 255, 0.98); /* More opaque for readability */
-            backdrop-filter: blur(12px);
-            border-radius: 20px; /* More rounded */
-            padding: 35px; /* Increased padding */
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08); /* Softer, more diffused shadow */
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: all 0.35s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px); /* More lift */
-            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
-        }
-
-        .service-card h3 {
-            color: #667eea;
-            font-size: 1.6rem; /* Larger */
-            margin-bottom: 18px;
-            font-weight: 700;
-        }
-
-        .service-card p {
-            color: #555; /* Slightly darker for better contrast */
-            line-height: 1.75;
-            font-size: 0.95rem;
-        }
-
-        .features {
-            background: #ffffff; /* Solid white background */
-            padding: 80px 0;
-            margin: 60px 0; /* No horizontal margin, let container handle it */
-        }
-        
-        .features .section-title {
-            color: #667eea; /* Accent color for title on white bg */
-            margin-bottom: 60px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
-            gap: 30px; /* Consistent gap */
-            padding: 0 20px; /* Padding for grid content within container */
-        }
-
-        .feature {
-            text-align: center;
-            color: #333; /* Dark text on white bg */
-            padding: 25px;
-            border-radius: 15px;
-            background: #f8f9fa; /* Slight off-white for feature cards */
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.08);
-        }
-
-        .feature-icon {
-            font-size: 2.8rem; /* SVG will be sized via width/height attributes */
-            margin-bottom: 20px;
-            display: inline-block; /* For SVGs */
-            color: #667eea; /* Accent color for icons */
-        }
-        .feature-icon svg {
-            width: 50px; /* Control SVG size */
-            height: 50px;
-            stroke-width: 1.5; /* Thinner strokes for elegance */
-        }
-
-        .feature h4 {
-            font-size: 1.3rem; /* Larger */
-            margin-bottom: 12px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        .feature p {
-            color: #666;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .experience {
-            background: rgba(255, 255, 255, 0.98); /* Similar to service cards */
-            backdrop-filter: blur(12px);
-            margin: 60px 20px; /* Keep side margin for inset effect */
-            border-radius: 25px;
-            padding: 80px 40px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        }
-
-        .experience .section-title { /* Use class for title */
-            color: #667eea;
-            margin-bottom: 50px;
-        }
-
-        .experience-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adjusted */
-            gap: 40px;
-            margin-top: 30px; /* Reduced margin from title */
-        }
-
-        .clients, .expertise {
-            text-align: left;
-            padding: 20px; /* Add some padding */
-            background: rgba(255,255,255,0.3); /* Subtle inner card effect */
-            border-radius: 15px;
-        }
-
-        .clients h3, .expertise h3 {
-            color: #5a67d8; /* Slightly darker blue for sub-headings */
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .clients p, .expertise p {
-            color: #444; /* Darker text */
-            line-height: 1.8;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
-        }
-
-        .contact {
-            background: #ffffff; /* Solid white background */
-            padding: 80px 0;
-            margin: 60px 0 80px 0; /* Bottom margin for spacing before end of page */
-        }
-
-        .contact .section-title {
-            color: #667eea; /* Accent color for title */
-             margin-bottom: 25px;
-        }
-        .contact > .container > p { /* Targeting the main descriptive p */
-            font-size: 1.1rem;
-            color: #555;
-            max-width: 700px;
-            margin: 0 auto 50px auto; /* Center and add bottom margin */
-            text-align:center;
-        }
-
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted */
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .contact-item {
-            padding: 25px;
-            background: #f8f9fa; /* Light bg for items */
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            text-align: center; /* Center contact items */
-        }
-
-        .contact-item h4 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-            font-weight: 700;
-            color: #333;
-        }
-
-        .contact-item p {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-
-        @media (max-width: 992px) { /* Added a breakpoint for tablets */
-            .hero h1 {
-                font-size: 3rem;
-            }
-            .hero p {
-                font-size: 1.2rem;
-            }
-            .section-title {
-                font-size: 2.4rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                margin: 80px 15px 40px; /* Reduced side margin */
-                padding: 60px 0;
-            }
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 30px;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            .service-card { padding: 30px; }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-                padding: 0 10px;
-            }
-            
-            .experience {
-                margin: 40px 15px;
-                padding: 60px 25px;
-            }
-            .experience-content {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-
-            .language-toggle {
-                top: 15px;
-                right: 15px;
-                padding: 8px;
-            }
-            .lang-btn {
-                padding: 8px 15px;
-                font-size: 13px;
-            }
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional Translation and Interpreting Services by Roland Baghnyan – 20+ Years Experience, Quick Turnaround, Accurate Translations. Serving NGOs, Agencies & Small Businesses in French, English & Mossi.">
+  <meta name="keywords" content="Professional Translation Services, Certified Interpreters, Document Translation Services, Multilingual Communication Solutions, Language Assistance for Small Businesses, One-time Translation Services, NGO Translation, Legal Translation, Medical Translation">
+  <title>Roland Baghnyan | Professional Translation & Interpreting Services - Fast, Accurate, Reliable</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="60" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+      animation: float 20s infinite linear;
+    }
+    @keyframes float {
+      0% { transform: translateX(-100px); }
+      100% { transform: translateX(100px); }
+    }
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    header p {
+      font-size: 1.4rem;
+      margin: 0 0 1rem;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
+    .header-highlight {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+    nav {
+      text-align: center;
+      background: #005599;
+      padding: 1rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1.5rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    .section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section h2 {
+      color: #003366;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .section h2::after {
+      content: '';
+      width: 60px;
+      height: 3px;
+      background: #0077cc;
+      display: block;
+      margin: 0.5rem auto;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .service-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border-left: 4px solid #0077cc;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .service-card h3 {
+      color: #003366;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    .service-card p {
+      color: #666;
+      line-height: 1.7;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .why-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .why-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .why-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #0077cc, #005599);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+      color: white;
+    }
+    .stats-section {
+      background: linear-gradient(135deg, #003366, #005599);
+      color: white;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 800px;
+      margin: 2rem auto 0;
+    }
+    .stat-item {
+      padding: 1rem;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      display: block;
+      color: #66ccff;
+    }
+    .testimonials-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .testimonial-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      position: relative;
+      border-top: 4px solid #0077cc;
+    }
+    .testimonial-card::before {
+      content: '"';
+      font-size: 4rem;
+      color: #0077cc;
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-family: Georgia, serif;
+    }
+    .testimonial-text {
+      font-style: italic;
+      color: #555;
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+    .testimonial-author {
+      font-weight: 600;
+      color: #003366;
+    }
+    .cta-section {
+      background: linear-gradient(135deg, #0077cc, #005599);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .cta-section h2 {
+      color: white;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .cta-section p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .cta-button {
+      background: white;
+      color: #0077cc;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    .cta-button.secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    .cta-button.secondary:hover {
+      background: white;
+      color: #0077cc;
+    }
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .contact-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: #0077cc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      color: white;
+      font-size: 1.2rem;
+    }
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+    .footer-links {
+      margin-bottom: 1rem;
+    }
+    .footer-links a {
+      color: #66ccff;
+      text-decoration: none;
+      margin: 0 1rem;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1.1rem;
+      }
+      .section {
+        padding: 2rem 1rem;
+      }
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      nav a {
+        margin: 0 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Language Toggle -->
-    <div class="language-toggle">
-        <button class="lang-btn active" onclick="switchLanguage('en')" aria-label="Switch to English">EN</button>
-        <button class="lang-btn" onclick="switchLanguage('fr')" aria-label="Passer au français">FR</button>
+  <header>
+    <h1>Roland Baghnyan</h1>
+    <p><strong>Professional Translation & Interpreting Services</strong></p>
+    <div class="header-highlight">
+      <strong>20+ Years Experience | Quick Turnaround | Culturally Accurate</strong>
     </div>
+  </header>
+  
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#why">Why Choose Me</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Get Quote</a>
+  </nav>
 
-    <!-- English Content -->
-    <div id="content-en" class="content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h1>Roland Baghnyan</h1>
-                <p>Professional Translation & Interpreting Services</p>
-                <a href="#contact" class="cta-button">Get Started Today</a>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section class="services-section section">
-            <div class="container">
-                <!-- <h2 class="section-title" style="color: white;">Our Services</h2> --> <!-- Optional title if desired -->
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>Professional Translation</h3>
-                        <p>Fast delivery of accurate translations for contracts, reports, policies, and technical documents. Specialized expertise in legal, medical, and NGO documentation with rigorous quality assurance processes.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Interpretation Services</h3>
-                        <p>Professional interpretation services for meetings, conferences, and training sessions. Simultaneous and consecutive interpretation between French, English, and Mossi with cultural sensitivity.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Localization & Adaptation</h3>
-                        <p>Culturally appropriate adaptations that maintain your message's impact. Expert localization for marketing materials, social media content, and multilingual campaigns with contextual accuracy.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Small Business Solutions</h3>
-                        <p>Flexible service packages designed for small business needs. Clear explanations of processes, affordable pricing, and personalized service to help your business communicate globally.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Ongoing Language Support</h3>
-                        <p>Comprehensive language support for ongoing projects or one-time translation services. Consistent quality and reliable partnership for all your multilingual needs.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Advanced Technology Integration</h3>
-                        <p>Advanced technology including SDL Trados Studio and Wordfast for terminology consistency. Rigorous QA processes and post-editing of machine translation services.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features -->
-        <section class="features section">
-            <div class="container">
-                <h2 class="section-title">Why Choose Me?</h2>
-                <div class="features-grid">
-                    <div class="feature">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                        </span>
-                        <h4>Fast Delivery</h4>
-                        <p>Prompt service and rapid response to urgent projects without compromising quality</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-                        </span>
-                        <h4>High Quality</h4>
-                        <p>Meticulous attention to detail maintaining the original message's integrity</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        </span>
-                        <h4>Cultural Sensitivity</h4>
-                        <p>Culturally nuanced translations that respect local contexts and resonate with target audiences</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                        </span>
-                        <h4>Clear Communication</h4>
-                        <p>Transparent communication and consistent updates throughout projects</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                        </span>
-                        <h4>Reliable Partnership</h4>
-                        <p>Dependable support with consistent quality trusted by clients for over two decades</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                        </span>
-                        <h4>Specialized Expertise</h4>
-                        <p>Advanced knowledge in NGO, legal, medical, and technical fields with industry-specific precision</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section class="experience section">
-            <div class="container">
-                <h2 class="section-title">20+ Years of Excellence</h2>
-                <div class="experience-content">
-                    <div class="clients">
-                        <h3>Prestigious Clients</h3>
-                        <p>Trusted by leading organizations including Humanity & Inclusion, ACDI/VOCA, WaterAid, Organization of African, Caribbean, and Pacific States (OACPS), and Christian Blind Mission (CBM).</p>
-                        <p>Proven track record of delivering high-quality translations that contribute to policy development and international funding approvals.</p>
-                    </div>
-                    
-                    <div class="expertise">
-                        <h3>Specialized Fields</h3>
-                        <p>Expert knowledge in international development, legal documentation, medical research, and technical reports. Advanced CAT tools proficiency ensures terminology consistency and precision.</p>
-                        <p>Industry-specific glossaries and deep understanding of sector requirements guarantee professional output that meets the highest standards.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section class="contact section" id="contact">
-            <div class="container">
-                <h2 class="section-title">Ready to Get Started?</h2>
-                <p>Contact me today for fast, accurate, and culturally sensitive translation services.</p>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h4>Response Time</h4>
-                        <p>Prompt responses within 2 hours</p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <h4>Consultation</h4>
-                        <p>Available for consultations</p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <h4>Business Inquiries</h4>
-                        <p>Connect for business inquiries</p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <h4>Location</h4>
-                        <p>Ouagadougou, Burkina Faso<br>Remote services worldwide</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section class="stats-section">
+    <h2><strong>Trusted by Global Organizations</strong></h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-number"><strong>20+</strong></span>
+        <span>Years of Professional Experience</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number"><strong>1.5M+</strong></span>
+        <span>Words Translated with Precision</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number"><strong>150+</strong></span>
+        <span>High-Quality Projects Delivered</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number"><strong>8</strong></span>
+        <span>Expert Translators in My Network</span>
+      </div>
     </div>
+  </section>
 
-    <!-- French Content -->
-    <div id="content-fr" class="content hidden">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h1>Roland Baghnyan</h1>
-                <p>Services professionnels de traduction et d'interprétation</p>
-                <a href="#contact-fr" class="cta-button">Demander des informations</a>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section class="services-section section">
-            <div class="container">
-                 <!-- <h2 class="section-title" style="color: white;">Nos Services</h2> -->
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>Traduction professionnelle</h3>
-                        <p>Nous proposons des traductions précises et fiables en respectant les délais, pour tous types de documents (contrats, rapports, politiques, documents techniques). Notre expertise dans les domaines juridique, médical et associatif nous permet de garantir rigueur et maîtrise terminologique.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Services d'interprétation</h3>
-                        <p>Nous proposons des services d’interprétation professionnels adaptés à vos besoins, que ce soit pour des réunions d’affaires, des conférences ou des sessions de formation. Nos interprètes expérimentés garantissent une transmission claire, précise et fidèle de vos échanges, facilitant ainsi la compréhension mutuelle entre interlocuteurs de différentes langues et cultures.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Localisation et adaptation</h3>
-                        <p>Nous vous aidons à adapter culturellement vos contenus pour préserver l’impact de votre message. Vos supports marketing, réseaux sociaux et campagnes multilingues sont traduits avec précision et adaptés aux spécificités culturelles de chaque marché. Nous veillons à harmoniser ton, expressions et visuels afin de répondre aux attentes locales tout en conservant l’essence de votre message.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Solutions pour petites entreprises</h3>
-                        <p>Nous offrons des solutions flexibles, adaptées aux besoins des petites entreprises, avec un accompagnement personnalisé, une tarification claire et abordable, et des explications transparentes à chaque étape. Notre mission est de faciliter votre communication multilingue en respectant votre budget.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Soutien linguistique continu</h3>
-                        <p>Nous proposons un soutien linguistique complet pour des projets ponctuels ou à long terme, avec une qualité constante. Grâce à notre expertise, nous offrons un service sur mesure adapté à vos besoins et à l’évolution de vos projets.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Intégration technologique avancée</h3>
-                        <p>Nous utilisons des outils avancés comme SDL Trados Studio et Wordfast pour garantir la cohérence terminologique. Nos contrôles qualité rigoureux assurent des traductions précises et fluides. Nous proposons également la post-édition des traductions automatiques, alliant rapidité et finesse humaine, pour un résultat efficace et adapté à vos besoins.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features -->
-        <section class="features section">
-            <div class="container">
-                <h2 class="section-title">Pourquoi me choisir ?</h2>
-                <div class="features-grid">
-                    <div class="feature">
-                        <span class="feature-icon">
-                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                        </span>
-                        <h4>Livraison rapide</h4>
-                        <p>Nous nous engageons à répondre avec réactivité à vos demandes, même les plus urgentes, tout en maintenant un niveau de qualité irréprochable. Votre projet est traité avec diligence, sans jamais sacrifier la précision ni la clarté de la traduction.</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
-                        </span>
-                        <h4>Haute qualité</h4>
-                        <p>Nous portons une attention méticuleuse à chaque détail afin de préserver l’intégrité et la nuance du message original. Notre rigueur garantit des traductions fidèles, claires et parfaitement adaptées à votre contexte, pour un résultat d’excellence à chaque étape.</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        </span>
-                        <h4>Sensibilité culturelle</h4>
-                        <p>Nous réalisons des traductions finement nuancées, respectueuses des contextes locaux et des particularités culturelles. Notre approche garantit que votre message trouve un écho authentique auprès de vos publics cibles, favorisant ainsi une communication efficace et respectueuse.</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                        </span>
-                        <h4>Communication claire</h4>
-                        <p>Nous privilégions une communication transparente et un suivi régulier tout au long de vos projets. Vous êtes ainsi informé en temps réel de l’avancement, ce qui garantit une collaboration fluide et une parfaite maîtrise des délais.</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <span class="feature-icon">
-                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                        </span>
-                        <h4>Partenariat fiable</h4>
-                        <p>Nous vous offrons un accompagnement constant, fondé sur une qualité irréprochable, et une confiance bâtie depuis plus de vingt ans. Nos clients apprécient notre sérieux et notre engagement, qui font de nous un partenaire sur lequel vous pouvez compter en toute sérénité.</p>
-                    </div>
-                    
-                    <div class="feature">
-                        <span class="feature-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                        </span>
-                        <h4>Compétences sectorielles pointues</h4>
-                        <p>Nous mettons à votre service une connaissance approfondie des secteurs associatif, juridique, médical et technique, assurant une précision terminologique et une compréhension fine des enjeux propres à chaque domaine. Cette expertise garantit des traductions rigoureuses, parfaitement adaptées à vos besoins spécifiques.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Experience -->
-        <section class="experience section">
-            <div class="container">
-                <h2 class="section-title">Plus de 20 ans d'excellence</h2>
-                <div class="experience-content">
-                    <div class="clients">
-                        <h3>Clients prestigieux</h3>
-                        <p>Nous avons l’honneur de collaborer avec des organisations de premier plan telles que Humanity & Inclusion, ACDI/VOCA, WaterAid, l’Organisation des États d’Afrique, des Caraïbes et du Pacifique (OEACP), ainsi que Christian Blind Mission (CBM).</p>
-                        <p>Grâce à un savoir-faire confirmé, nous livrons des traductions de haute qualité qui soutiennent efficacement l’élaboration de politiques et l’obtention de financements internationaux, contribuant ainsi au succès de projets d’envergure.</p>
-                    </div>
-                    
-                    <div class="expertise">
-                        <h3>Domaines spécialisés</h3>
-                        <p>Nous possédons une expertise pointue en développement international, documentation juridique, recherche médicale et rapports techniques. La maîtrise avancée des outils de traduction assistée par ordinateur (TAO) nous permet d’assurer une cohérence terminologique et une précision optimales.</p>
-                        <p>Grâce à des glossaires spécialisés propres à chaque secteur et une compréhension approfondie des exigences spécifiques, nous garantissons des résultats professionnels conformes aux standards les plus exigeants.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section class="contact section" id="contact-fr">
-            <div class="container">
-                <h2 class="section-title">Prêt à donner vie à votre projet ?</h2>
-                <p>Contactez-moi dès aujourd’hui pour bénéficier de services de traduction rapides, précis et parfaitement adaptés à vos enjeux culturels. Ensemble, donnons vie à vos projets multilingues avec rigueur et confiance.</p>
-                
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h4>Temps de réponse</h4>
-                        <p>Nous comprenons l’importance de la réactivité dans la gestion de vos projets. C’est pourquoi nous nous engageons à vous fournir une réponse rapide, généralement sous 2 heures.</p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <h4>Consultation</h4>
-                        <p>Je reste à votre disposition pour toute consultation afin de répondre à vos besoins spécifiques et vous accompagner au mieux dans vos projets de traduction et d’interprétation.</p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <h4>Demandes commerciales</h4>
-                        <p>N’hésitez pas à me contacter pour toute demande commerciale ou information complémentaire. Je suis à votre écoute pour étudier vos projets et vous proposer des solutions adaptées.</p>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <h4>Localisation</h4>
-                        <p>Basé à Ouagadougou, Burkina Faso,
-je propose des services à distance accessibles partout dans le monde.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <section id="services" class="section">
+    <h2><strong>Professional Translation and Interpreting Services</strong></h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3><strong>Document Translation Services</strong></h3>
+        <p><strong>Fast delivery</strong> of accurate translations for contracts, reports, policies, and technical documents. <strong>Specialized expertise</strong> in legal, medical, and NGO documentation with <strong>rigorous quality assurance</strong> processes.</p>
+      </div>
+      <div class="service-card">
+        <h3><strong>Certified Interpreters - Remote & On-Site</strong></h3>
+        <p><strong>Professional interpretation</strong> services for meetings, conferences, and training sessions. <strong>Simultaneous and consecutive interpretation</strong> between French, English, and Mossi with <strong>cultural sensitivity</strong>.</p>
+      </div>
+      <div class="service-card">
+        <h3><strong>Localization & Transcreation</strong></h3>
+        <p><strong>Culturally appropriate</strong> adaptations that maintain your message's impact. <strong>Expert localization</strong> for marketing materials, social media content, and multilingual campaigns with <strong>contextual accuracy</strong>.</p>
+      </div>
+      <div class="service-card">
+        <h3><strong>Language Assistance for Small Businesses</strong></h3>
+        <p><strong>Flexible service packages</strong> designed for small business needs. <strong>Clear explanations</strong> of processes, <strong>affordable pricing</strong>, and <strong>personalized service</strong> to help your business communicate globally.</p>
+      </div>
+      <div class="service-card">
+        <h3><strong>Multilingual Communication Solutions</strong></h3>
+        <p><strong>Comprehensive language support</strong> for ongoing projects or <strong>one-time translation services</strong>. <strong>Consistent quality</strong> and <strong>reliable partnership</strong> for all your multilingual needs.</p>
+      </div>
+      <div class="service-card">
+        <h3><strong>Quality Assurance & CAT Tools</strong></h3>
+        <p><strong>Advanced technology</strong> including SDL Trados Studio and Wordfast for <strong>terminology consistency</strong>. <strong>Rigorous QA processes</strong> and <strong>post-editing of machine translation</strong> services.</p>
+      </div>
     </div>
+  </section>
 
-    <script>
-        let currentLanguage = 'en';
+  <section id="why" class="section">
+    <h2><strong>Why Choose My Translation Services</strong></h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3><strong>Quick Turnaround</strong></h3>
+        <p><strong>Prompt service</strong> and <strong>rapid response</strong> to urgent projects. <strong>Fast delivery</strong> without compromising on quality, keeping your projects on schedule.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h3><strong>Accurate Translation & Attention to Detail</strong></h3>
+        <p><strong>High-quality work</strong> with <strong>meticulous attention to detail</strong>. Every translation maintains the <strong>original message's integrity</strong> with <strong>professional output</strong>.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🌍</div>
+        <h3><strong>Cultural Intelligence & Contextual Understanding</strong></h3>
+        <p><strong>Culturally nuanced translations</strong> that respect local contexts. <strong>Understanding of cultural nuances</strong> ensures your message resonates with target audiences.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💬</div>
+        <h3><strong>Responsive Communication & Excellent Customer Service</strong></h3>
+        <p><strong>Clear explanations</strong> and <strong>consistent updates</strong> throughout projects. <strong>Helpful support</strong> and <strong>transparent communication</strong> build lasting partnerships.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🤝</div>
+        <h3><strong>Professional Service & Reliable Partner</strong></h3>
+        <p><strong>Dependable support</strong> you can count on. <strong>Consistent quality</strong> and <strong>professional demeanor</strong> have earned trust from repeat clients for over two decades.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🏆</div>
+        <h3><strong>Proven Industry Expertise</strong></h3>
+        <p><strong>Specialized knowledge</strong> in NGO, legal, medical, and technical fields. <strong>Advanced CAT tools proficiency</strong> and <strong>industry-specific glossaries</strong> ensure precision.</p>
+      </div>
+    </div>
+  </section>
 
-        // Language content for SEO meta tags
-        const languageContent = {
-            en: {
-                title: 'Roland Baghnyan - Professional Translation Services',
-                description: 'Professional translation and interpreting services with 20+ years experience. Specialized in legal, medical, and NGO documentation.',
-                lang: 'en'
-            },
-            fr: {
-                title: 'Roland Baghnyan - Services professionnels de traduction',
-                description: 'Services professionnels de traduction et d\'interprétation avec plus de 20 ans d\'expérience. Spécialisé dans la documentation juridique, médicale et ONG.',
-                lang: 'fr'
-            }
-        };
+  <section id="experience" class="section">
+    <h2><strong>Trusted by Leading Organizations</strong></h2>
+    <div style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;">
+      <p style="font-size: 1.1rem; color: #555; line-height: 1.8;">
+        <strong>20+ years serving prestigious clients</strong> including <strong>Humanity & Inclusion</strong>, <strong>ACDI/VOCA</strong>, <strong>WaterAid</strong>, <strong>Organization of African, Caribbean, and Pacific States (OACPS)</strong>, and <strong>Christian Blind Mission (CBM)</strong>. 
+      </p>
+      <p style="font-size: 1.1rem; color: #555; line-height: 1.8;">
+        <strong>Specialized expertise</strong> in international development, legal documentation, medical research, and technical reports. <strong>Proven track record</strong> of delivering high-quality translations that contribute to policy development and international funding approvals.
+      </p>
+      <div style="margin-top: 2rem;">
+        <h3 style="color: #003366; margin-bottom: 1rem;"><strong>Areas of Specialization:</strong></h3>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem;">
+          <span style="background: #e6f3ff; color: #0077cc; padding: 0.5rem 1rem; border-radius: 25px; font-weight: 600;">International Development & NGOs</span>
+          <span style="background: #e6f3ff; color: #0077cc; padding: 0.5rem 1rem; border-radius: 25px; font-weight: 600;">Legal & Financial Documentation</span>
+          <span style="background: #e6f3ff; color: #0077cc; padding: 0.5rem 1rem; border-radius: 25px; font-weight: 600;">Medical & Research Translation</span>
+          <span style="background: #e6f3ff; color: #0077cc; padding: 0.5rem 1rem; border-radius: 25px; font-weight: 600;">Technical Documentation</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        function switchLanguage(lang) {
-            // Hide current content
-            document.getElementById(`content-${currentLanguage}`).classList.add('hidden');
-            
-            // Show new content
-            document.getElementById(`content-${lang}`).classList.remove('hidden');
-            
-            // Update active button
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            // Ensure event.target is correctly referenced if called from an event
-            // For direct calls (like in initializeLanguage), query the button
-            let buttonToActivate;
-            if (typeof event !== 'undefined' && event && event.target && event.target.closest('.lang-btn')) {
-                 buttonToActivate = event.target.closest('.lang-btn');
-            } else {
-                buttonToActivate = document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`);
-            }
-            if (buttonToActivate) {
-                buttonToActivate.classList.add('active');
-            }
-            
-            // Update HTML lang attribute
-            document.documentElement.lang = languageContent[lang].lang;
-            
-            // Update meta tags for SEO
-            document.getElementById('page-title').textContent = languageContent[lang].title;
-            document.getElementById('page-description').setAttribute('content', languageContent[lang].description);
-            document.title = languageContent[lang].title;
-            
-            // Store preference
-            currentLanguage = lang;
-            localStorage.setItem('preferredLanguage', lang);
-            
-            // Smooth scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
 
-        // Initialize language based on browser preference or stored preference
-        function initializeLanguage() {
-            const storedLang = localStorage.getItem('preferredLanguage');
-            const browserLang = navigator.language.substring(0, 2);
-            
-            let initialLang = 'en'; // default
-            
-            if (storedLang && (storedLang === 'en' || storedLang === 'fr')) {
-                initialLang = storedLang;
-            } else if (browserLang === 'fr') {
-                initialLang = 'fr';
-            }
-            
-            // Switch to initialLang.
-            // Call switchLanguage directly without relying on event.target
-            // Make sure the initially active EN button is deactivated first if switching
-            if (initialLang !== 'en') {
-                 const currentActiveButton = document.querySelector('.lang-btn.active');
-                 if(currentActiveButton) currentActiveButton.classList.remove('active'); // Deactivate default EN
-            }
-            switchLanguage(initialLang); // This will set the correct active button
-        }
 
-        // Smooth scrolling for anchor links
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeLanguage();
-            
-            // Add smooth scrolling to all anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    // Ensure the target exists in the currently visible content
-                    const activeContentId = currentLanguage === 'en' ? '#content-en' : '#content-fr';
-                    let target = document.querySelector(`${activeContentId} ${targetId}`); 
-                    
-                    if (!target) { // Fallback for cases where ID might be global (like #contact for EN or #contact-fr for FR)
-                        target = document.querySelector(targetId);
-                    }
-                    
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-        });
+  <section class="cta-section">
+    <h2><strong>Ready for Professional Translation Services?</strong></h2>
+    <p><strong>Get your project started with a reliable, experienced professional.</strong><br>
+    <strong>Quick turnaround • Accurate translations • Responsive communication</strong></p>
+    <div class="cta-buttons">
+      <a href="mailto:rolandbagh@gmail.com?subject=Translation%20Quote%20Request&body=Hello%20Roland,%0A%0AI%20would%20like%20to%20request%20a%20quote%20for%20translation%20services.%0A%0AProject%20details:%0A-%20Source%20language:%0A-%20Target%20language:%0A-%20Document%20type:%0A-%20Word%20count/pages:%0A-%20Deadline:%0A%0APlease%20let%20me%20know%20your%20availability%20and%20pricing.%0A%0AThank%20you!" class="cta-button"><strong>Request a Quote</strong></a>
+      <a href="tel:+22670257022" class="cta-button secondary"><strong>Call Now: +226 70 25 70 22</strong></a>
+    </div>
+  </section>
 
-        // Keyboard navigation for language toggle
-        document.addEventListener('keydown', function(e) {
-            if (e.altKey && e.key === 'l') { // Alt + L
-                e.preventDefault();
-                const newLang = currentLanguage === 'en' ? 'fr' : 'en';
-                const button = document.querySelector(`.lang-btn[onclick="switchLanguage('${newLang}')"]`);
-                if (button) button.click();
-            }
-        });
-    </script>
+  <section id="contact" class="section">
+    <h2><strong>Contact Information</strong></h2>
+    <p style="text-align: center; font-size: 1.1rem; color: #555; margin-bottom: 2rem;">
+      <strong>Ready to work with a dependable translation professional?</strong> Contact me today for fast, accurate, and culturally sensitive translation services.
+    </p>
+    <div class="contact-info">
+      <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <h3><strong>Email</strong></h3>
+        <p><a href="mailto:rolandbagh@gmail.com" style="color: #0077cc; text-decoration: none; font-weight: 600;">rolandbagh@gmail.com</a></p>
+        <p style="font-size: 0.9rem; color: #666;"><strong>Prompt responses within 2 hours</strong></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📱</div>
+        <h3><strong>Phone</strong></h3>
+        <p><a href="tel:+22670257022" style="color: #0077cc; text-decoration: none; font-weight: 600;">+226 70 25 70 22</a></p>
+        <p style="font-size: 0.9rem; color: #666;"><strong>Available for consultations</strong></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🔗</div>
+        <h3><strong>LinkedIn</strong></h3>
+        <p><a href="https://linkedin.com/in/roland-baghnyan-a2079aa9" style="color: #0077cc; text-decoration: none; font-weight: 600;" target="_blank">Professional Profile</a></p>
+        <p style="font-size: 0.9rem; color: #666;"><strong>Connect for business inquiries</strong></p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h3><strong>Location</strong></h3>
+        <p><strong>Ouagadougou, Burkina Faso</strong></p>
+        <p style="font-size: 0.9rem; color: #666;"><strong>Remote services worldwide</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#why">Why Choose Me</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>&copy; 2025 Roland Baghnyan. All rights reserved. | <strong>Professional Translation & Interpreting Services</strong></p>
+    <p style="font-size: 0.8rem; opacity: 0.8;">
+      <strong>Serving Translation Agencies • Small Businesses • Individual Clients Worldwide</strong><br>
+      French • English • Mossi | Quick Turnaround • Accurate Translations • Cultural Intelligence
+    </p>
+  </footer>
 </body>
 </html>
