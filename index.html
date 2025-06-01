@@ -124,12 +124,12 @@
             color: white;
         }
         
-        /* === LANGUAGE TOGGLE === */
+        /* === LANGUAGE TOGGLE FIXES === */
         .language-toggle {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
+            top: 25px; /* Increased top position */
+            right: 30px; /* Increased right position */
+            z-index: 1001; /* Increased z-index */
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             border-radius: 30px;
@@ -137,6 +137,9 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
             display: flex;
             gap: 8px;
+            /* Added border for better visibility */
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            transform: scale(1.05); /* Slightly larger for visibility */
         }
 
         .lang-btn {
@@ -168,7 +171,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            z-index: 1000;
+            z-index: 1000; /* Lower than toggle */
             background: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
             padding: 20px 0;
@@ -184,12 +187,30 @@
         .logo {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.7rem; /* Harmonized base size */
             color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .logo span {
-            color: var(--accent);
+        .logo .name {
+            font-weight: 700;
+        }
+
+        .logo .agency {
+            font-weight: 600;
+            color: var(--secondary);
+            position: relative;
+            padding-left: 12px;
+        }
+
+        .logo .agency:before {
+            content: '|';
+            position: absolute;
+            left: 0;
+            opacity: 0.7;
+            color: var(--primary);
         }
 
         .nav-links {
@@ -349,99 +370,6 @@
         .about-content h2:after {
             left: 0;
             transform: none;
-        }
-
-        .credentials {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 30px 0;
-        }
-
-        .credential-badge {
-            background: var(--light);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--primary);
-            border: 1px solid rgba(26, 77, 128, 0.2);
-        }
-
-        /* === TESTIMONIALS SECTION === */
-        .testimonials {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonials h2 {
-            color: white;
-        }
-
-        .testimonials h2:after {
-            background: var(--accent);
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .testimonial-content {
-            font-style: italic;
-            margin-bottom: 20px;
-            position: relative;
-            padding-left: 30px;
-        }
-
-        .testimonial-content:before {
-            content: """;
-            position: absolute;
-            left: 0;
-            top: -15px;
-            font-size: 3rem;
-            color: rgba(255, 255, 255, 0.3);
-            font-family: serif;
-        }
-
-        .client-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .client-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            margin-right: 15px;
-            background: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .client-details h4 {
-            margin-bottom: 5px;
-        }
-
-        .client-details p {
-            color: rgba(255, 255, 255, 0.7);
-            margin: 0;
-            font-size: 0.9rem;
         }
 
         /* === CONTACT SECTION === */
@@ -691,13 +619,31 @@
             }
             
             .language-toggle {
-                top: 15px;
-                right: 15px;
+                top: 20px; /* Adjusted for mobile */
+                right: 20px;
                 padding: 8px;
+                transform: none; /* Remove scaling on mobile */
             }
             .lang-btn {
                 padding: 8px 15px;
                 font-size: 13px;
+            }
+
+            /* Responsive logo adjustments */
+            .logo {
+                font-size: 1.5rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+            
+            .logo .agency {
+                padding-left: 0;
+                font-size: 1.3rem;
+            }
+            
+            .logo .agency:before {
+                display: none;
             }
         }
 
@@ -721,6 +667,21 @@
             .contact-form {
                 padding: 30px 20px;
             }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .logo .agency {
+                font-size: 1.2rem;
+            }
+            
+            /* Make language toggle more visible on small screens */
+            .language-toggle {
+                top: 15px;
+                right: 15px;
+                padding: 6px;
+            }
         }
     </style>
 </head>
@@ -734,11 +695,13 @@
     <!-- Header & Navigation -->
     <header>
         <div class="container nav-container">
-            <div class="logo">Roland<span>Baghnyan</span></div>
+            <div class="logo">
+                <span class="name">Roland Baghnyan</span>
+                <span class="agency">RB Traduction</span>
+            </div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">
@@ -837,55 +800,7 @@
                         <p>Professional freelance translator specialized in legal, business, and technical translations from and to English, French and Mossi.</p>
                         <p>With over 20 years of experience in the translation industry, I am committed to delivering high-quality, accurate translations that meet deadlines. Each project is handled with the utmost care to meet the specific requirements of my clients.</p>
                         
-                        <div class="credentials">
-                            <span class="credential-badge">ATA Certified</span>
-                            <span class="credential-badge">SFT Member</span>
-                            <span class="credential-badge">ISO 17100</span>
-                            <span class="credential-badge">Legal Expert</span>
-                        </div>
-                        
                         <p>I guarantee the highest linguistic and cultural quality. Absolute confidentiality and terminological rigor are at the heart of my professional approach.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials">
-            <div class="container">
-                <h2>Client Testimonials</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <p class="testimonial-content">Roland translated our technical documentation with remarkable precision. His sector expertise and respect for deadlines make him a trusted partner.</p>
-                        <div class="client-info">
-                            <div class="client-avatar">MJ</div>
-                            <div class="client-details">
-                                <h4>Marie Joly</h4>
-                                <p>Technical Director, TechSolutions</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial-content">Roland's legal translations are absolutely reliable. His understanding of legal nuances in English and French is impressive.</p>
-                        <div class="client-info">
-                            <div class="client-avatar">PD</div>
-                            <div class="client-details">
-                                <h4>Pierre Dubois</h4>
-                                <p>Lawyer, Legrand & Associates</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial-content">Our English marketing campaign was perfectly adapted to the French market thanks to Roland's work. A real added value!</p>
-                        <div class="client-info">
-                            <div class="client-avatar">LC</div>
-                            <div class="client-details">
-                                <h4>Lucie Chevalier</h4>
-                                <p>Marketing Director, EuroBrands</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -924,16 +839,6 @@
                             <div class="contact-details">
                                 <h3>Working Hours</h3>
                                 <p>Mon-Fri: 8:00 AM - 6:00 PM<br>Emergencies: 7/7</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Certifications</h3>
-                                <p>ATA Certified Translator<br>ISO 17100:2015<br>SFT Member</p>
                             </div>
                         </div>
                     </div>
@@ -1136,59 +1041,11 @@
                         <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Roland Baghnyan - Traducteur professionnel">
                     </div>
                     <div class="about-content">
-                        <h2>Traducteur Certifié</h2>
+                        <h2>Traducteur professionnel</h2>
                         <p>Traducteur professionnel indépendant spécialisé dans les traductions juridiques, commerciales et techniques en anglais, français et mooré.</p>
                         <p>Fort de plus de 20 ans d'expérience dans le secteur, je m'engage à fournir des traductions de haute qualité, précises et respectueuses des délais. Chaque projet est traité avec le plus grand soin pour répondre aux exigences spécifiques de mes clients.</p>
                         
-                        <div class="credentials">
-                            <span class="credential-badge">Certifié ATA</span>
-                            <span class="credential-badge">Membre SFT</span>
-                            <span class="credential-badge">ISO 17100</span>
-                            <span class="credential-badge">Expert Juridique</span>
-                        </div>
-                        
                         <p>Je garantis la plus haute qualité linguistique et culturelle. Confidentialité absolue et rigueur terminologique sont au cœur de ma démarche professionnelle.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="testimonials">
-            <div class="container">
-                <h2>Témoignages Clients</h2>
-                <div class="testimonial-grid">
-                    <div class="testimonial-card">
-                        <p class="testimonial-content">Roland a traduit notre documentation technique avec une précision remarquable. Son expertise sectorielle et son respect des délais en font un partenaire de confiance.</p>
-                        <div class="client-info">
-                            <div class="client-avatar">MJ</div>
-                            <div class="client-details">
-                                <h4>Marie Joly</h4>
-                                <p>Directrice Technique, TechSolutions</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial-content">Les traductions juridiques de Roland sont d'une fiabilité absolue. Sa compréhension des nuances légales est impressionnante.</p>
-                        <div class="client-info">
-                            <div class="client-avatar">PD</div>
-                            <div class="client-details">
-                                <h4>Pierre Dubois</h4>
-                                <p>Avocat, Cabinet Legrand & Associés</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial-content">Notre campagne marketing anglaise a été parfaitement adaptée au marché français grâce au travail de Roland. Une véritable valeur ajoutée !</p>
-                        <div class="client-info">
-                            <div class="client-avatar">LC</div>
-                            <div class="client-details">
-                                <h4>Lucie Chevalier</h4>
-                                <p>Directrice Marketing, EuroBrands</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1227,16 +1084,6 @@
                             <div class="contact-details">
                                 <h3>Horaires</h3>
                                 <p>Lun-Ven: 9h00 - 18h00<br>Urgences: 7j/7</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h3>Certifications</h3>
-                                <p>Traducteur certifié ATA<br>ISO 17100:2015<br>Membre SFT</p>
                             </div>
                         </div>
                     </div>
@@ -1304,7 +1151,7 @@
                 <div class="footer-grid">
                     <div class="footer-col">
                         <h3>Roland Baghnyan</h3>
-                        <p>Service de traduction professionnelle pour institutions et particuliers. Qualité certifiée, respect des délais, confidentialité absolue.</p>
+                        <p>Service de traduction professionnelle pour institutions et particuliers. Qualité garantie, respect des délais, confidentialité absolue.</p>
                         <div class="social-links">
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1444,6 +1291,9 @@
             
             // Save preference
             localStorage.setItem('siteLanguage', lang);
+            
+            // Log language change for debugging
+            console.log(`Language changed to: ${lang}`);
         }
     </script>
 </body>
