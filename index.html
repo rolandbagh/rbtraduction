@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roland Baghnyan - Traducteur Professionnel Certifié</title>
+    <title>Roland Baghnyan - Professional Translation Services</title>
+    <meta name="description" content="Professional translation and interpreting services with 20+ years experience. Specialized in legal, medical, and NGO documentation.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -121,6 +122,45 @@
         .btn-outline:hover {
             background: var(--primary);
             color: white;
+        }
+        
+        /* === LANGUAGE TOGGLE === */
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+            display: flex;
+            gap: 8px;
+        }
+
+        .lang-btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: #555;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5);
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: #e9e9f0;
+            color: #333;
+            transform: translateY(-1px);
         }
 
         /* === HEADER & NAVIGATION === */
@@ -561,6 +601,15 @@
             color: rgba(255, 255, 255, 0.6);
             font-size: 0.9rem;
         }
+        
+        /* === LANGUAGE CONTENT MANAGEMENT === */
+        .language-content {
+            display: none;
+        }
+        
+        .language-content.active {
+            display: block;
+        }
 
         /* === RESPONSIVE DESIGN === */
         @media (max-width: 992px) {
@@ -640,6 +689,16 @@
             h2 {
                 font-size: 2rem;
             }
+            
+            .language-toggle {
+                top: 15px;
+                right: 15px;
+                padding: 8px;
+            }
+            .lang-btn {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -666,14 +725,20 @@
     </style>
 </head>
 <body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn" onclick="switchLanguage('en')" aria-label="Switch to English">EN</button>
+        <button class="lang-btn active" onclick="switchLanguage('fr')" aria-label="Passer au français">FR</button>
+    </div>
+
     <!-- Header & Navigation -->
     <header>
         <div class="container nav-container">
             <div class="logo">Roland<span>Baghnyan</span></div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
-                <li><a href="#about">À Propos</a></li>
-                <li><a href="#testimonials">Témoignages</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="mobile-menu">
@@ -682,305 +747,666 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Traductions de précision pour entreprises exigeantes</h1>
-                <p>Service de traduction professionnelle certifiée anglais/français/espagnol avec garantie de qualité et respect des délais</p>
-                <div class="hero-btns">
-                    <a href="#contact" class="btn btn-primary">Demander un devis</a>
-                    <a href="#services" class="btn btn-outline">Découvrir mes services</a>
+    <!-- English Content -->
+    <div id="content-en" class="language-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Precision Translations for Demanding Businesses</h1>
+                    <p>Certified professional translation services in English/French/Spanish with guaranteed quality and on-time delivery</p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn btn-primary">Request a Quote</a>
+                        <a href="#services" class="btn btn-outline">Discover My Services</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Services de Traduction</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-gavel"></i>
-                    </div>
-                    <h3>Juridique</h3>
-                    <p>Contrats, jugements, actes notariés avec certification et confidentialité garantie</p>
-                    <a href="#contact" class="btn btn-outline">Demander un devis</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Commerciale</h3>
-                    <p>Rapports financiers, propositions commerciales, documents d'entreprise</p>
-                    <a href="#contact" class="btn btn-outline">Demander un devis</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Marketing</h3>
-                    <p>Campagnes publicitaires, contenus web, brochures adaptées culturellement</p>
-                    <a href="#contact" class="btn btn-outline">Demander un devis</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-file-alt"></i>
-                    </div>
-                    <h3>Technique</h3>
-                    <p>Manuels, documentations, spécifications techniques avec terminologie précise</p>
-                    <a href="#contact" class="btn btn-outline">Demander un devis</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-passport"></i>
-                    </div>
-                    <h3>Documents personnels</h3>
-                    <p>Diplômes, actes d'état civil, documents administratifs certifiés</p>
-                    <a href="#contact" class="btn btn-outline">Demander un devis</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Localisation web</h3>
-                    <p>Sites internet, applications mobiles, logiciels adaptés au marché cible</p>
-                    <a href="#contact" class="btn btn-outline">Demander un devis</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-container">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Roland Baghnyan - Traducteur professionnel">
-                </div>
-                <div class="about-content">
-                    <h2>Traducteur Certifié</h2>
-                    <p>Traducteur professionnel indépendant spécialisé dans les traductions juridiques, commerciales et techniques de l'anglais et de l'espagnol vers le français.</p>
-                    <p>Fort de 12 ans d'expérience dans le secteur, je m'engage à fournir des traductions de haute qualité, précises et respectueuses des délais. Chaque projet est traité avec le plus grand soin pour répondre aux exigences spécifiques de mes clients.</p>
-                    
-                    <div class="credentials">
-                        <span class="credential-badge">Certifié ATA</span>
-                        <span class="credential-badge">Membre SFT</span>
-                        <span class="credential-badge">ISO 17100</span>
-                        <span class="credential-badge">Expert Juridique</span>
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Translation Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Legal</h3>
+                        <p>Contracts, judgments, notarized documents with certification and guaranteed confidentiality</p>
+                        <a href="#contact" class="btn btn-outline">Request a Quote</a>
                     </div>
                     
-                    <p>Je travaille exclusivement vers ma langue maternelle (le français) pour garantir la plus haute qualité linguistique et culturelle. Confidentialité absolue et rigueur terminologique sont au cœur de ma démarche professionnelle.</p>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Business</h3>
+                        <p>Financial reports, business proposals, corporate documents</p>
+                        <a href="#contact" class="btn btn-outline">Request a Quote</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Marketing</h3>
+                        <p>Advertising campaigns, web content, culturally adapted brochures</p>
+                        <a href="#contact" class="btn btn-outline">Request a Quote</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Technical</h3>
+                        <p>Manuals, documentation, technical specifications with precise terminology</p>
+                        <a href="#contact" class="btn btn-outline">Request a Quote</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-passport"></i>
+                        </div>
+                        <h3>Personal Documents</h3>
+                        <p>Diplomas, civil status documents, certified administrative documents</p>
+                        <a href="#contact" class="btn btn-outline">Request a Quote</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Website Localization</h3>
+                        <p>Websites, mobile apps, software adapted to target markets</p>
+                        <a href="#contact" class="btn btn-outline">Request a Quote</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <h2>Témoignages Clients</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-content">Roland a traduit notre documentation technique avec une précision remarquable. Son expertise sectorielle et son respect des délais en font un partenaire de confiance.</p>
-                    <div class="client-info">
-                        <div class="client-avatar">MJ</div>
-                        <div class="client-details">
-                            <h4>Marie Joly</h4>
-                            <p>Directrice Technique, TechSolutions</p>
-                        </div>
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-container">
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Roland Baghnyan - Professional Translator">
                     </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-content">Les traductions juridiques de Roland sont d'une fiabilité absolue. Sa compréhension des nuances légales dans les deux langues est impressionnante.</p>
-                    <div class="client-info">
-                        <div class="client-avatar">PD</div>
-                        <div class="client-details">
-                            <h4>Pierre Dubois</h4>
-                            <p>Avocat, Cabinet Legrand & Associés</p>
+                    <div class="about-content">
+                        <h2>Certified Translator</h2>
+                        <p>Professional freelance translator specialized in legal, business, and technical translations from English and Spanish to French.</p>
+                        <p>With 12 years of experience in the sector, I am committed to delivering high-quality, accurate translations that meet deadlines. Each project is handled with the utmost care to meet the specific requirements of my clients.</p>
+                        
+                        <div class="credentials">
+                            <span class="credential-badge">ATA Certified</span>
+                            <span class="credential-badge">SFT Member</span>
+                            <span class="credential-badge">ISO 17100</span>
+                            <span class="credential-badge">Legal Expert</span>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p class="testimonial-content">Notre campagne marketing espagnole a été parfaitement adaptée au marché français grâce au travail de Roland. Une véritable valeur ajoutée !</p>
-                    <div class="client-info">
-                        <div class="client-avatar">LC</div>
-                        <div class="client-details">
-                            <h4>Lucie Chevalier</h4>
-                            <p>Directrice Marketing, EuroBrands</p>
-                        </div>
+                        
+                        <p>I work exclusively into my native language (French) to guarantee the highest linguistic and cultural quality. Absolute confidentiality and terminological rigor are at the heart of my professional approach.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Demander un Devis</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>roland.baghnyan@example.com</p>
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2>Client Testimonials</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">Roland translated our technical documentation with remarkable precision. His sector expertise and respect for deadlines make him a trusted partner.</p>
+                        <div class="client-info">
+                            <div class="client-avatar">MJ</div>
+                            <div class="client-details">
+                                <h4>Marie Joly</h4>
+                                <p>Technical Director, TechSolutions</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Téléphone</h3>
-                            <p>+33 6 12 34 56 78</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Horaires</h3>
-                            <p>Lun-Ven: 9h00 - 18h00<br>Urgences: 7j/7</p>
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">Roland's legal translations are absolutely reliable. His understanding of legal nuances in both languages is impressive.</p>
+                        <div class="client-info">
+                            <div class="client-avatar">PD</div>
+                            <div class="client-details">
+                                <h4>Pierre Dubois</h4>
+                                <p>Lawyer, Legrand & Associates</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Certifications</h3>
-                            <p>ATA Certified Translator<br>ISO 17100:2015<br>Membre SFT</p>
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">Our Spanish marketing campaign was perfectly adapted to the French market thanks to Roland's work. A real added value!</p>
+                        <div class="client-info">
+                            <div class="client-avatar">LC</div>
+                            <div class="client-details">
+                                <h4>Lucie Chevalier</h4>
+                                <p>Marketing Director, EuroBrands</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form id="translationForm">
-                        <div class="form-group">
-                            <label for="name">Nom Complet</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="sourceLanguage">Langue Source</label>
-                            <select id="sourceLanguage" name="sourceLanguage" required>
-                                <option value="">Sélectionnez...</option>
-                                <option value="en">Anglais</option>
-                                <option value="es">Espagnol</option>
-                                <option value="other">Autre</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="targetLanguage">Langue Cible</label>
-                            <select id="targetLanguage" name="targetLanguage" required>
-                                <option value="">Sélectionnez...</option>
-                                <option value="fr">Français</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="documentType">Type de Document</label>
-                            <select id="documentType" name="documentType" required>
-                                <option value="">Sélectionnez...</option>
-                                <option value="legal">Juridique</option>
-                                <option value="business">Commercial</option>
-                                <option value="technical">Technique</option>
-                                <option value="marketing">Marketing</option>
-                                <option value="personal">Personnel</option>
-                                <option value="website">Site Web</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Détails du Projet</label>
-                            <textarea id="message" name="message" placeholder="Décrivez votre projet, incluez le nombre de mots, le format du document et la date limite..." required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
-                    </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Roland Baghnyan</h3>
-                    <p>Service de traduction professionnelle pour entreprises et particuliers. Qualité certifiée, respect des délais, confidentialité absolue.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Request a Quote</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>roland.baghnyan@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Phone</h3>
+                                <p>+33 6 12 34 56 78</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Working Hours</h3>
+                                <p>Mon-Fri: 9:00 AM - 6:00 PM<br>Emergencies: 7/7</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Certifications</h3>
+                                <p>ATA Certified Translator<br>ISO 17100:2015<br>SFT Member</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="translationFormEn">
+                            <div class="form-group">
+                                <label for="name-en">Full Name</label>
+                                <input type="text" id="name-en" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email-en">Email</label>
+                                <input type="email" id="email-en" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="sourceLanguage-en">Source Language</label>
+                                <select id="sourceLanguage-en" name="sourceLanguage" required>
+                                    <option value="">Select...</option>
+                                    <option value="en">English</option>
+                                    <option value="es">Spanish</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="targetLanguage-en">Target Language</label>
+                                <select id="targetLanguage-en" name="targetLanguage" required>
+                                    <option value="">Select...</option>
+                                    <option value="fr">French</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="documentType-en">Document Type</label>
+                                <select id="documentType-en" name="documentType" required>
+                                    <option value="">Select...</option>
+                                    <option value="legal">Legal</option>
+                                    <option value="business">Business</option>
+                                    <option value="technical">Technical</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="personal">Personal</option>
+                                    <option value="website">Website</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message-en">Project Details</label>
+                                <textarea id="message-en" name="message" placeholder="Describe your project, include word count, document format, and deadline..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Send Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>Roland Baghnyan</h3>
+                        <p>Professional translation services for businesses and individuals. Certified quality, respect for deadlines, absolute confidentiality.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Legal Translation</a></li>
+                            <li><a href="#">Business Translation</a></li>
+                            <li><a href="#">Technical Translation</a></li>
+                            <li><a href="#">Marketing Translation</a></li>
+                            <li><a href="#">Personal Documents</a></li>
+                            <li><a href="#">Website Localization</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>Useful Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Pricing</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Privacy</a></li>
+                            <li><a href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>Contact</h3>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                            <li><i class="fas fa-phone"></i> +33 6 12 34 56 78</li>
+                            <li><i class="fas fa-envelope"></i> contact@rolandtranslation.fr</li>
+                        </ul>
                     </div>
                 </div>
                 
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Traduction Juridique</a></li>
-                        <li><a href="#">Traduction Commerciale</a></li>
-                        <li><a href="#">Traduction Technique</a></li>
-                        <li><a href="#">Traduction Marketing</a></li>
-                        <li><a href="#">Documents Personnels</a></li>
-                        <li><a href="#">Localisation Web</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Liens Utiles</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">À propos</a></li>
-                        <li><a href="#">Tarifs</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Confidentialité</a></li>
-                        <li><a href="#">Conditions</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Contact</h3>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
-                        <li><i class="fas fa-phone"></i> +33 6 12 34 56 78</li>
-                        <li><i class="fas fa-envelope"></i> contact@rolandtraduction.fr</li>
-                    </ul>
+                <div class="copyright">
+                    <p>&copy; 2023 Roland Baghnyan - All Rights Reserved | SIRET: 123 456 789 00010</p>
                 </div>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 Roland Baghnyan - Tous droits réservés | SIRET: 123 456 789 00010</p>
+        </footer>
+    </div>
+
+    <!-- French Content -->
+    <div id="content-fr" class="language-content active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Traductions de précision pour entreprises exigeantes</h1>
+                    <p>Service de traduction professionnelle certifiée anglais/français/espagnol avec garantie de qualité et respect des délais</p>
+                    <div class="hero-btns">
+                        <a href="#contact" class="btn btn-primary">Demander un devis</a>
+                        <a href="#services" class="btn btn-outline">Découvrir mes services</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Services de Traduction</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3>Juridique</h3>
+                        <p>Contrats, jugements, actes notariés avec certification et confidentialité garantie</p>
+                        <a href="#contact" class="btn btn-outline">Demander un devis</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Commerciale</h3>
+                        <p>Rapports financiers, propositions commerciales, documents d'entreprise</p>
+                        <a href="#contact" class="btn btn-outline">Demander un devis</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Marketing</h3>
+                        <p>Campagnes publicitaires, contenus web, brochures adaptées culturellement</p>
+                        <a href="#contact" class="btn btn-outline">Demander un devis</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Technique</h3>
+                        <p>Manuels, documentations, spécifications techniques avec terminologie précise</p>
+                        <a href="#contact" class="btn btn-outline">Demander un devis</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-passport"></i>
+                        </div>
+                        <h3>Documents personnels</h3>
+                        <p>Diplômes, actes d'état civil, documents administratifs certifiés</p>
+                        <a href="#contact" class="btn btn-outline">Demander un devis</a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Localisation web</h3>
+                        <p>Sites internet, applications mobiles, logiciels adaptés au marché cible</p>
+                        <a href="#contact" class="btn btn-outline">Demander un devis</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-container">
+                    <div class="about-img">
+                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Roland Baghnyan - Traducteur professionnel">
+                    </div>
+                    <div class="about-content">
+                        <h2>Traducteur Certifié</h2>
+                        <p>Traducteur professionnel indépendant spécialisé dans les traductions juridiques, commerciales et techniques de l'anglais et de l'espagnol vers le français.</p>
+                        <p>Fort de 12 ans d'expérience dans le secteur, je m'engage à fournir des traductions de haute qualité, précises et respectueuses des délais. Chaque projet est traité avec le plus grand soin pour répondre aux exigences spécifiques de mes clients.</p>
+                        
+                        <div class="credentials">
+                            <span class="credential-badge">Certifié ATA</span>
+                            <span class="credential-badge">Membre SFT</span>
+                            <span class="credential-badge">ISO 17100</span>
+                            <span class="credential-badge">Expert Juridique</span>
+                        </div>
+                        
+                        <p>Je travaille exclusivement vers ma langue maternelle (le français) pour garantir la plus haute qualité linguistique et culturelle. Confidentialité absolue et rigueur terminologique sont au cœur de ma démarche professionnelle.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2>Témoignages Clients</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">Roland a traduit notre documentation technique avec une précision remarquable. Son expertise sectorielle et son respect des délais en font un partenaire de confiance.</p>
+                        <div class="client-info">
+                            <div class="client-avatar">MJ</div>
+                            <div class="client-details">
+                                <h4>Marie Joly</h4>
+                                <p>Directrice Technique, TechSolutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">Les traductions juridiques de Roland sont d'une fiabilité absolue. Sa compréhension des nuances légales dans les deux langues est impressionnante.</p>
+                        <div class="client-info">
+                            <div class="client-avatar">PD</div>
+                            <div class="client-details">
+                                <h4>Pierre Dubois</h4>
+                                <p>Avocat, Cabinet Legrand & Associés</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <p class="testimonial-content">Notre campagne marketing espagnole a été parfaitement adaptée au marché français grâce au travail de Roland. Une véritable valeur ajoutée !</p>
+                        <div class="client-info">
+                            <div class="client-avatar">LC</div>
+                            <div class="client-details">
+                                <h4>Lucie Chevalier</h4>
+                                <p>Directrice Marketing, EuroBrands</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Demander un Devis</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>roland.baghnyan@example.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Téléphone</h3>
+                                <p>+33 6 12 34 56 78</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Horaires</h3>
+                                <p>Lun-Ven: 9h00 - 18h00<br>Urgences: 7j/7</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Certifications</h3>
+                                <p>ATA Certified Translator<br>ISO 17100:2015<br>Membre SFT</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form id="translationFormFr">
+                            <div class="form-group">
+                                <label for="name-fr">Nom Complet</label>
+                                <input type="text" id="name-fr" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email-fr">Email</label>
+                                <input type="email" id="email-fr" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="sourceLanguage-fr">Langue Source</label>
+                                <select id="sourceLanguage-fr" name="sourceLanguage" required>
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="en">Anglais</option>
+                                    <option value="es">Espagnol</option>
+                                    <option value="other">Autre</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="targetLanguage-fr">Langue Cible</label>
+                                <select id="targetLanguage-fr" name="targetLanguage" required>
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="fr">Français</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="documentType-fr">Type de Document</label>
+                                <select id="documentType-fr" name="documentType" required>
+                                    <option value="">Sélectionnez...</option>
+                                    <option value="legal">Juridique</option>
+                                    <option value="business">Commercial</option>
+                                    <option value="technical">Technique</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="personal">Personnel</option>
+                                    <option value="website">Site Web</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message-fr">Détails du Projet</label>
+                                <textarea id="message-fr" name="message" placeholder="Décrivez votre projet, incluez le nombre de mots, le format du document et la date limite..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <h3>Roland Baghnyan</h3>
+                        <p>Service de traduction professionnelle pour entreprises et particuliers. Qualité certifiée, respect des délais, confidentialité absolue.</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>Services</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">Traduction Juridique</a></li>
+                            <li><a href="#">Traduction Commerciale</a></li>
+                            <li><a href="#">Traduction Technique</a></li>
+                            <li><a href="#">Traduction Marketing</a></li>
+                            <li><a href="#">Documents Personnels</a></li>
+                            <li><a href="#">Localisation Web</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>Liens Utiles</h3>
+                        <ul class="footer-links">
+                            <li><a href="#">À propos</a></li>
+                            <li><a href="#">Tarifs</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Confidentialité</a></li>
+                            <li><a href="#">Conditions</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-col">
+                        <h3>Contact</h3>
+                        <ul class="footer-links">
+                            <li><i class="fas fa-map-marker-alt"></i> Paris, France</li>
+                            <li><i class="fas fa-phone"></i> +33 6 12 34 56 78</li>
+                            <li><i class="fas fa-envelope"></i> contact@rolandtraduction.fr</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="copyright">
+                    <p>&copy; 2023 Roland Baghnyan - Tous droits réservés | SIRET: 123 456 789 00010</p>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script>
+        // Language management
+        let currentLanguage = 'fr';
+        
+        function switchLanguage(lang) {
+            // Hide current content
+            document.getElementById(`content-${currentLanguage}`).classList.remove('active');
+            
+            // Show new content
+            document.getElementById(`content-${lang}`).classList.add('active');
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Store preference
+            currentLanguage = lang;
+            localStorage.setItem('preferredLanguage', lang);
+            
+            // Update navigation links based on language
+            updateNavigationLinks(lang);
+        }
+        
+        function updateNavigationLinks(lang) {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            if (lang === 'en') {
+                navLinks[0].textContent = 'Services';
+                navLinks[1].textContent = 'About';
+                navLinks[2].textContent = 'Testimonials';
+                navLinks[3].textContent = 'Contact';
+            } else {
+                navLinks[0].textContent = 'Services';
+                navLinks[1].textContent = 'À Propos';
+                navLinks[2].textContent = 'Témoignages';
+                navLinks[3].textContent = 'Contact';
+            }
+        }
+        
+        function initializeLanguage() {
+            const storedLang = localStorage.getItem('preferredLanguage');
+            const browserLang = navigator.language.substring(0, 2);
+            
+            let initialLang = 'fr';
+            
+            if (storedLang && (storedLang === 'en' || storedLang === 'fr')) {
+                initialLang = storedLang;
+            } else if (browserLang === 'en') {
+                initialLang = 'en';
+            }
+            
+            switchLanguage(initialLang);
+        }
+        
         // Mobile Navigation
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
@@ -1010,12 +1436,16 @@
         });
         
         // Form Submission
-        const form = document.getElementById('translationForm');
-        form.addEventListener('submit', (e) => {
+        document.getElementById('translationFormEn')?.addEventListener('submit', (e) => {
             e.preventDefault();
-            // Form validation would go here
+            alert('Thank you for your request! I will contact you shortly.');
+            e.target.reset();
+        });
+        
+        document.getElementById('translationFormFr')?.addEventListener('submit', (e) => {
+            e.preventDefault();
             alert('Merci pour votre demande ! Je vous contacterai dans les plus brefs délais.');
-            form.reset();
+            e.target.reset();
         });
         
         // Header scroll effect
@@ -1029,6 +1459,9 @@
                 header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.08)';
             }
         });
+        
+        // Initialize language
+        document.addEventListener('DOMContentLoaded', initializeLanguage);
     </script>
 </body>
 </html>
