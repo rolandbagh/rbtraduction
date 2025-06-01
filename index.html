@@ -727,8 +727,8 @@
 <body>
     <!-- Language Toggle -->
     <div class="language-toggle">
-        <button class="lang-btn" onclick="switchLanguage('en')" aria-label="Switch to English">EN</button>
-        <button class="lang-btn active" onclick="switchLanguage('fr')" aria-label="Passer au français">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn active" data-lang="fr">FR</button>
     </div>
 
     <!-- Header & Navigation -->
@@ -956,7 +956,7 @@
                                     <option value="">Select...</option>
                                     <option value="en">English</option>
                                     <option value="fr">French</option>
-                                    <option value="other">Other</option>
+                                    <option value="mos">Mossi</option>
                                 </select>
                             </div>
                             
@@ -965,6 +965,8 @@
                                 <select id="targetLanguage-en" name="targetLanguage" required>
                                     <option value="">Select...</option>
                                     <option value="fr">French</option>
+                                    <option value="en">English</option>
+                                    <option value="mos">Mossi</option>
                                 </select>
                             </div>
                             
@@ -1234,7 +1236,7 @@
                             </div>
                             <div class="contact-details">
                                 <h3>Certifications</h3>
-                                <p>ATA Certified Translator<br>ISO 17100:2015<br>Membre SFT</p>
+                                <p>Traducteur certifié ATA<br>ISO 17100:2015<br>Membre SFT</p>
                             </div>
                         </div>
                     </div>
@@ -1256,8 +1258,8 @@
                                 <select id="sourceLanguage-fr" name="sourceLanguage" required>
                                     <option value="">Sélectionnez...</option>
                                     <option value="en">Anglais</option>
-                                    <option value="es">Français</option>
-                                    <option value="other">Autre</option>
+                                    <option value="fr">Français</option>
+                                    <option value="mos">Mooré</option>
                                 </select>
                             </div>
                             
@@ -1266,6 +1268,8 @@
                                 <select id="targetLanguage-fr" name="targetLanguage" required>
                                     <option value="">Sélectionnez...</option>
                                     <option value="fr">Français</option>
+                                    <option value="en">Anglais</option>
+                                    <option value="mos">Mooré</option>
                                 </select>
                             </div>
                             
@@ -1351,117 +1355,96 @@
 
     <script>
         // Language management
-        let currentLanguage = 'fr';
-        
-        function switchLanguage(lang) {
-            // Hide current content
-            document.getElementById(`content-${currentLanguage}`).classList.remove('active');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language
+            const storedLang = localStorage.getItem('siteLanguage');
+            const browserLang = navigator.language.startsWith('fr') ? 'fr' : 'en';
+            const initialLang = storedLang || browserLang;
+            setLanguage(initialLang);
             
-            // Show new content
+            // Language toggle event
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const lang = btn.getAttribute('data-lang');
+                    setLanguage(lang);
+                });
+            });
+            
+            // Mobile Navigation
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenu.querySelector('i').classList.toggle('fa-bars');
+                mobileMenu.querySelector('i').classList.toggle('fa-times');
+            });
+            
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.classList.remove('active');
+                    mobileMenu.querySelector('i').classList.remove('fa-times');
+                    mobileMenu.querySelector('i').classList.add('fa-bars');
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Form Submission
+            document.getElementById('translationFormEn')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your request! I will contact you shortly.');
+                e.target.reset();
+            });
+            
+            document.getElementById('translationFormFr')?.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Merci pour votre demande ! Je vous contacterai dans les plus brefs délais.');
+                e.target.reset();
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.padding = '15px 0';
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '20px 0';
+                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.08)';
+                }
+            });
+        });
+        
+        function setLanguage(lang) {
+            // Hide all language content
+            document.querySelectorAll('.language-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected language content
             document.getElementById(`content-${lang}`).classList.add('active');
             
             // Update active button
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            document.querySelector(`.lang-btn[onclick="switchLanguage('${lang}')"]`).classList.add('active');
+            document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
             
             // Update HTML lang attribute
             document.documentElement.lang = lang;
             
-            // Store preference
-            currentLanguage = lang;
-            localStorage.setItem('preferredLanguage', lang);
-            
-            // Update navigation links based on language
-            updateNavigationLinks(lang);
+            // Save preference
+            localStorage.setItem('siteLanguage', lang);
         }
-        
-        function updateNavigationLinks(lang) {
-            const navLinks = document.querySelectorAll('.nav-links a');
-            if (lang === 'en') {
-                navLinks[0].textContent = 'Services';
-                navLinks[1].textContent = 'About';
-                navLinks[2].textContent = 'Testimonials';
-                navLinks[3].textContent = 'Contact';
-            } else {
-                navLinks[0].textContent = 'Services';
-                navLinks[1].textContent = 'À Propos';
-                navLinks[2].textContent = 'Témoignages';
-                navLinks[3].textContent = 'Contact';
-            }
-        }
-        
-        function initializeLanguage() {
-            const storedLang = localStorage.getItem('preferredLanguage');
-            const browserLang = navigator.language.substring(0, 2);
-            
-            let initialLang = 'fr';
-            
-            if (storedLang && (storedLang === 'en' || storedLang === 'fr')) {
-                initialLang = storedLang;
-            } else if (browserLang === 'en') {
-                initialLang = 'en';
-            }
-            
-            switchLanguage(initialLang);
-        }
-        
-        // Mobile Navigation
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenu.querySelector('i').classList.toggle('fa-bars');
-            mobileMenu.querySelector('i').classList.toggle('fa-times');
-        });
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                navLinks.classList.remove('active');
-                mobileMenu.querySelector('i').classList.remove('fa-times');
-                mobileMenu.querySelector('i').classList.add('fa-bars');
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Form Submission
-        document.getElementById('translationFormEn')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your request! I will contact you shortly.');
-            e.target.reset();
-        });
-        
-        document.getElementById('translationFormFr')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Merci pour votre demande ! Je vous contacterai dans les plus brefs délais.');
-            e.target.reset();
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.padding = '15px 0';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.padding = '20px 0';
-                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.08)';
-            }
-        });
-        
-        // Initialize language
-        document.addEventListener('DOMContentLoaded', initializeLanguage);
     </script>
 </body>
 </html>
