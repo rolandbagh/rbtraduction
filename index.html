@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RB Traduction | Services de Traduction Professionnelle</title>
+    <title>RB Traduction | Services professionnels de traduction</title>
     <meta name="description" content="Traducteur certifié à Ouagadougou offrant des services de traduction français-anglais pour entreprises, ONG et particuliers. Demandez un devis gratuit !">
     
     <!-- Favicon -->
@@ -11,196 +11,202 @@
     <link rel="apple-touch-icon" href="https://i.imgur.com/JXO3mc5.png">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="RB Traduction | Services de Traduction Professionnelle">
+    <meta property="og:title" content="RB Traduction | Services professionnels de traduction">
     <meta property="og:description" content="Traducteur certifié à Ouagadougou offrant des services de traduction précis français-anglais.">
     <meta property="og:image" content="https://i.imgur.com/JXO3mc5.png">
     <meta property="og:url" content="https://www.rbtraduction.com">
     <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <style>
         :root {
             --primary-color: #2c3e50;
-            --secondary-color: #2980b9;
-            --accent-color: #3498db;
+            --secondary-color: #2980b9; 
+            --accent-color: #007bff; 
             --light-bg: #f8f9fa;
             --dark-text: #333;
             --light-text: #7f8c8d;
+            --heading-font: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --body-font: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--body-font);
             line-height: 1.6;
             color: var(--dark-text);
             max-width: 1000px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px 20px 20px;
             background-color: #fff;
+            font-size: 17px;
         }
         
-        /* Language Toggle */
         .language-toggle {
             text-align: right;
             margin-bottom: 20px;
+            padding-top: 20px;
         }
         
         .language-btn {
             background: none;
             border: 1px solid var(--accent-color);
             color: var(--accent-color);
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 8px 15px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: 500;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
+            margin-left: 5px;
         }
         
-        .language-btn:hover {
-            background: var(--accent-color);
-            color: white;
-        }
-        
+        .language-btn:hover,
         .language-btn.active {
             background: var(--accent-color);
             color: white;
         }
         
-        /* Hidden language content */
-        .lang-content {
-            display: none;
-        }
+        .lang-content { display: none; }
+        .lang-content.active { display: block; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         
-        .lang-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        header {
+        .main-header {
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
+            margin-bottom: 50px;
+            padding: 40px 20px 50px 20px;
             border-bottom: 1px solid #eee;
+            background-color: var(--light-bg);
+            margin-left: -20px; 
+            margin-right: -20px;
         }
         
         .logo {
             max-width: 180px;
-            margin: 0 auto 15px;
+            margin: 0 auto 20px;
             transition: transform 0.3s ease;
         }
-        
-        .logo:hover {
-            transform: scale(1.05);
-        }
+        .logo:hover { transform: scale(1.05); }
         
         h1, h2, h3 {
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-family: var(--heading-font);
+        }
+        h1 { font-size: 2.8rem; margin-top: 0; }
+        
+        .main-header h2 {
+            font-size: 1.8rem; 
+            line-height: 1.4; 
+            color: var(--primary-color); 
+            font-weight: 600; 
+            margin-bottom: 20px;
+            border-bottom: none; 
+            display: block; 
         }
         
-        h1 {
-            font-size: 2.5rem;
-            margin-top: 0;
-        }
-        
-        h2 {
-            font-size: 1.8rem;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 5px;
+        section h2 {
+            font-size: 2rem; 
+            border-bottom: 3px solid var(--accent-color); 
+            padding-bottom: 8px; 
             display: inline-block;
+            margin-bottom: 30px; 
         }
-        
+        h3 { font-size: 1.5rem; }
+
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1.25rem; 
             color: var(--light-text);
             margin-bottom: 25px;
             font-weight: 300;
         }
+        section { margin-bottom: 70px; }
         
         .cta-box {
             background-color: var(--light-bg);
-            padding: 25px;
+            padding: 35px; 
             border-radius: 8px;
-            margin: 30px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 40px 0; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07); 
+        }
+        .cta-box h2 {
+           font-size: 1.8rem; 
+           border-bottom: none; 
+           padding-bottom: 0;
+           margin-bottom: 20px; 
+           display: block;
         }
         
         .benefits-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 25px; 
             margin: 30px 0;
         }
         
         .benefit-item {
             background: #f1f8fe;
-            padding: 20px;
+            padding: 25px; 
             border-left: 4px solid var(--accent-color);
             border-radius: 4px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06); 
         }
-        
         .benefit-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1); 
+        }
+        .benefit-item strong { 
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+            color: var(--primary-color);
+            font-weight: 700; 
         }
         
         a {
             color: var(--secondary-color);
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 700; 
             transition: color 0.3s ease;
         }
+        a:hover { color: var(--primary-color); text-decoration: underline; }
         
-        a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
-        
-        .contact-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-        
-        .contact-list li {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-list li::before {
-            content: "•";
+        .contact-list { list-style-type: none; padding: 0; margin: 25px 0; }
+        .contact-list li { margin-bottom: 15px; display: flex; align-items: center; }
+        .contact-list li i { 
+            margin-right: 12px;
             color: var(--accent-color);
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
+            width: 1.2em; 
+            text-align: center;
+            font-size: 1.1rem;
         }
         
         .testimonial {
             font-style: italic;
-            padding: 20px;
+            padding: 25px; 
             background: #f5f5f5;
             border-radius: 8px;
             position: relative;
-            margin: 25px 0;
+            margin: 30px 0; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
         }
-        
         .testimonial::before {
             content: """;
-            font-size: 4rem;
+            font-size: 5rem; 
             color: var(--accent-color);
-            opacity: 0.2;
+            opacity: 0.15; 
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 5px; 
+            left: 15px; 
             line-height: 1;
         }
-        
         .testimonial-author {
             font-weight: bold;
             text-align: right;
@@ -212,92 +218,147 @@
             background: white;
             border: 1px solid #eee;
             border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            padding: 25px; 
+            margin-bottom: 25px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        
         .service-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-5px); 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1); 
         }
+        .service-card h3 { 
+            margin-bottom: 15px;
+            font-size: 1.4rem; 
+            font-weight: 700;
+        }
+        .service-card ul { padding-left: 20px; }
+        .service-card ul li { margin-bottom: 8px; }
         
         footer {
             text-align: center;
-            margin-top: 50px;
-            padding-top: 20px;
+            margin-top: 60px; 
+            padding-top: 30px; 
             border-top: 1px solid #eee;
             color: var(--light-text);
             font-size: 0.9rem;
         }
         
         .whatsapp-button {
-            display: inline-block;
+            display: inline-flex; /* For icon and text alignment */
+            align-items: center;
+            justify-content: center; /* Centers icon + text */
+            gap: 8px; /* Space between icon and text */
             background-color: #25D366;
-            color: white;
-            padding: 10px 20px;
+            color: white !important; 
+            padding: 12px 22px; 
             border-radius: 5px;
-            text-decoration: none;
+            text-decoration: none !important;
             font-weight: bold;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
+            margin-top: 10px; /* Default margin, can be overridden */
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
-        
         .whatsapp-button:hover {
             background-color: #128C7E;
-            text-decoration: none;
+            text-decoration: none !important;
+            transform: translateY(-2px);
+        }
+
+        .email-action-button {
+            display: inline-flex; /* For icon and text alignment */
+            align-items: center;
+            justify-content: center; /* Centers icon + text */
+            gap: 8px; /* Space between icon and text */
+            background: var(--primary-color);
+            color: white !important;
+            padding: 12px 22px; /* Same padding as whatsapp-button */
+            border-radius: 5px; /* Same border-radius */
+            text-decoration: none !important; /* Same text-decoration */
+            font-weight: bold; /* Same font-weight */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            /* No margin-top by default, meant for paired context */
+        }
+        .email-action-button:hover {
+            background-color: var(--secondary-color); /* Darken primary or use secondary */
+            text-decoration: none !important;
+            transform: translateY(-2px);
+        }
+
+        .cta-button-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        /* Override specific button margins when in this container */
+        .cta-button-container > .whatsapp-button,
+        .cta-button-container > .email-action-button {
+            margin-top: 0; /* Remove individual top margin for alignment in flex row */
         }
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
+            body { font-size: 16px; }
+            h1 { font-size: 2.2rem; }
+            .main-header h2 { font-size: 1.5rem; }
+            section h2, .cta-box h2 { font-size: 1.7rem; }
+            .benefits-container { grid-template-columns: 1fr; }
+            .cta-box { padding: 25px; }
             
-            h2 {
-                font-size: 1.5rem;
+            .cta-button-container > a { /* Target any 'a' tag direct child */
+                width: 100%;
+                margin-bottom: 10px;
+                /* justify-content: center in button class handles text centering */
             }
-            
-            .benefits-container {
-                grid-template-columns: 1fr;
+            .cta-button-container > a:last-child {
+                margin-bottom: 0;
             }
-            
-            .cta-box {
-                padding: 20px;
+
+            .main-header {
+                padding: 30px 15px 40px 15px;
+                margin-left: -20px; 
+                margin-right: -20px; 
             }
         }
+         @media (max-width: 480px) {
+            .language-toggle { text-align: center; }
+            .language-btn { padding: 7px 12px; font-size: 0.85rem; }
+            h1 { font-size: 2rem; }
+            .main-header h2 { font-size: 1.3rem; }
+            section h2, .cta-box h2 { font-size: 1.5rem; }
+         }
     </style>
 </head>
 <body>
     <!-- Language Toggle -->
     <div class="language-toggle">
-        <button class="language-btn active" onclick="switchLanguage('fr')">Français</button>
-        <button class="language-btn" onclick="switchLanguage('en')">English</button>
+        <button class="language-btn active" onclick="switchLanguage('fr', event)">Français</button>
+        <button class="language-btn" onclick="switchLanguage('en', event)">English</button>
     </div>
 
     <!-- French Content -->
     <div id="fr-content" class="lang-content active">
-        <header>
+        <header class="main-header">
             <img src="https://i.imgur.com/JXO3mc5.png" alt="RB Traduction Logo" class="logo">
             <h1>RB Traduction</h1>
-            <h2>Services Professionnels de Traduction et Interprétation par Roland Baghnyan</h2>
-            <p class="tagline">Combler les écarts linguistiques pour les entreprises et institutions au Burkina Faso et au-delà</p>
+            <h2>Services professionnels de traduction et d’interprétation<br>par Roland Baghnyan</h2>
+            <p class="tagline">Combler les écarts linguistiques pour les entreprises et institutions au Burkina Faso et à l’international</p>
         </header>
 
         <section>
             <h2>Pourquoi choisir RB Traduction ?</h2>
             <div class="benefits-container">
                 <div class="benefit-item">
-                    <strong>✅ Traductions précises et adaptées culturellement</strong> - Une communication impeccable adaptée à votre public cible.
+                    <strong>✅ Traductions précises et culturellement adaptées</strong> - Une communication claire et efficace, parfaitement ajustée à votre public cible, pour garantir un impact optimal.
                 </div>
                 <div class="benefit-item">
-                    <strong>✅ Délais rapides</strong> - Respect des échéances sans compromettre la qualité.
+                    <strong>✅ Délais rapides et respectés</strong> - Livraison ponctuelle sans compromis sur la qualité.
                 </div>
                 <div class="benefit-item">
-                    <strong>✅ Confidentialité et fiabilité</strong> - Gestion sécurisée des documents sensibles.
+                    <strong>✅ Confidentialité et fiabilité garanties</strong> - Gestion sécurisée de vos documents sensibles avec la plus grande rigueur.
                 </div>
                 <div class="benefit-item">
-                    <strong>✅ Expertise multilingue</strong> - Spécialisation dans les langues clés pour les marchés africains et internationaux.
+                    <strong>✅ Expertise multilingue spécialisée</strong> - Maîtrise des langues clés pour les marchés africains et internationaux, avec une attention particulière à la localisation.
                 </div>
             </div>
         </section>
@@ -305,99 +366,93 @@
         <div class="cta-box">
             <h2>📞 Contactez-moi dès aujourd'hui !</h2>
             <ul class="contact-list">
-                <li><strong>Téléphone/WhatsApp :</strong> <a href="https://wa.me/22670257022">+226 70 25 70 22</a></li>
-                <li><strong>Email :</strong> <a href="mailto:rolandbagh@gmail.com">rolandbagh@gmail.com</a></li>
-                <li><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/roland-baghnyan-a2079aa9/" target="_blank">Roland Baghnyan</a></li>
-                <li><strong>Facebook :</strong> <a href="https://www.facebook.com/rolandbagh" target="_blank">Roland Bagh</a></li>
+                <li><i class="fas fa-phone-alt"></i><i class="fab fa-whatsapp" style="margin-left: 5px; margin-right: 10px;"></i><strong>Téléphone/WhatsApp :</strong> <a href="https://wa.me/22670257022">+226 70 25 70 22</a></li>
+                <li><i class="fas fa-envelope"></i><strong>Email : </strong> <a href="mailto:rolandbagh@gmail.com">rolandbagh@gmail.com</a></li>
+                <li><i class="fab fa-linkedin"></i><strong>LinkedIn : </strong> <a href="https://www.linkedin.com/in/roland-baghnyan-a2079aa9/" target="_blank">Roland Baghnyan</a></li>
+                <li><i class="fab fa-facebook"></i><strong>Facebook : </strong> <a href="https://www.facebook.com/rolandbagh" target="_blank">Roland Baghnyan</a></li>
             </ul>
-            <a href="https://wa.me/22670257022" class="whatsapp-button">Envoyer un message WhatsApp</a>
+            <a href="https://wa.me/22670257022" class="whatsapp-button"><i class="fab fa-whatsapp"></i> Envoyer un message WhatsApp</a>
         </div>
 
         <section>
-            <h2>Services proposés</h2>
-            
+            <h2>Nos services</h2>
             <div class="service-card">
                 <h3>1. Traduction professionnelle de documents</h3>
                 <ul>
-                    <li><strong>Documents commerciaux et juridiques</strong> - Contrats, rapports, certificats avec précision certifiée</li>
-                    <li><strong>Localisation de sites web et marketing</strong> - Contenu adapté culturellement pour les publics africains et internationaux</li>
-                    <li><strong>Traductions médicales et techniques</strong> - Terminologie spécialisée avec précision</li>
-                    <li><strong>Traductions financières et académiques</strong> - Documents bancaires, articles de recherche et matériel éducatif</li>
+                    <li><strong>Documents commerciaux, juridiques, financiers et académiques avec précision certifiée.</li>
+                    <li><strong>Localisation et adaptation culturelle de sites web, contenus marketing et e-commerce pour toucher efficacement vos marchés cibles.</li>
+                    <li><strong>Traductions médicales et techniques avec terminologie spécialisée.</li>
                 </ul>
             </div>
-
             <div class="service-card">
                 <h3>2. Services d'interprétation</h3>
                 <ul>
-                    <li><strong>Interprétation sur place et à distance</strong> - Pour réunions, conférences et négociations</li>
-                    <li><strong>Interprétation communautaire</strong> - Soutien aux ONG, secteur de la santé et besoins du secteur informel</li>
-                    <li><strong>Interprétation consécutive et simultanée</strong> - Adaptée à vos besoins spécifiques</li>
+                    <li><strong>Interprétation simultanée et consécutive, sur place ou à distance, pour réunions, conférences et négociations.</li>
+                    <li><strong>Interprétation communautaire pour ONG, secteur de la santé et acteurs du secteur informel.</li>
                 </ul>
             </div>
-
             <div class="service-card">
-                <h3>3. Contenu multilingue optimisé SEO</h3>
+                <h3>3. Traduction web optimisée SEO</h3>
                 <ul>
-                    <li><strong>Traductions basées sur la recherche de mots-clés</strong> - Pour une meilleure visibilité en ligne</li>
-                    <li><strong>Stratégies SEO localisées</strong> - Pour attirer des clients régionaux et internationaux</li>
-                    <li><strong>Création de contenu multilingue</strong> - Messages professionnels pour vos marchés cibles</li>
+                    <li><strong>Traduction et localisation de sites internet, blogs, fiches produits et métadonnées, adaptées aux mots-clés recherchés par vos clients dans chaque langue cible.</li>
+                    <li><strong>Intégration et optimisation des contenus dans votre CMS (WordPress, Joomla, Magento, etc.) pour maximiser votre visibilité en ligne.</li>
+                    <li><strong>Création et adaptation de contenus multilingues pour renforcer votre présence digitale et améliorer votre référencement naturel.</li>
                 </ul>
             </div>
         </section>
 
         <section>
-            <h2>Secteurs servis</h2>
+            <h2>Nos secteurs d’activité</h2>
             <div class="benefits-container">
                 <div class="benefit-item">
-                    <strong>Agences de traduction</strong> - Projets volumineux avec qualité constante et tarifs compétitifs
+                    <strong><span role="img" aria-label="briefcase">💼</span> Agences de traduction :</strong> gestion de projets volumineux avec qualité constante et tarifs compétitifs.
                 </div>
                 <div class="benefit-item">
-                    <strong>Petites entreprises et secteur informel</strong> - Solutions abordables pour startups et entrepreneurs locaux
+                    <strong><span role="img" aria-label="lightbulb">💡</span> PME et secteur informel :</strong> solutions abordables et personnalisées pour startups et entrepreneurs locaux.
                 </div>
                 <div class="benefit-item">
-                    <strong>Institutions et ONG</strong> - Traductions culturellement adaptées pour les projets de développement
+                    <strong><span role="img" aria-label="globe">🌍</span> Institutions et ONG :</strong> traductions culturellement adaptées pour vos projets de développement.
                 </div>
                 <div class="benefit-item">
-                    <strong>Particuliers</strong> - Traductions ponctuelles avec livraison rapide et attention personnalisée
+                    <strong><span role="img" aria-label="person">👤</span> Particuliers :</strong> services rapides et personnalisés pour toutes vos traductions ponctuelles.
                 </div>
             </div>
         </section>
 
         <div class="cta-box">
-            <h2>📩 Demandez un devis gratuit !</h2>
-            <p><em>"RB Traduction propose des traductions rapides et précises adaptées à vos besoins. Envoyez-moi votre document pour un devis sans engagement !"</em></p>
-            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                <a href="https://wa.me/22670257022" class="whatsapp-button">WhatsApp</a>
-                <a href="mailto:rolandbagh@gmail.com" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Envoyer un email</a>
+            <h2>📩 Contactez RB Traduction dès aujourd’hui !</h2>
+            <p><em>"Envoyez votre document pour un devis gratuit et sans engagement."</em></p>
+            <div class="cta-button-container">
+                <a href="https://wa.me/22670257022" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="mailto:rolandbagh@gmail.com" class="email-action-button"><i class="fas fa-envelope"></i> Envoyer un email</a>
             </div>
-            <p style="margin-top: 15px;">Ou appelez directement : <strong>+226 70 25 70 22</strong></p>
+            <p style="margin-top: 25px; text-align:center;">Ou appelez directement : <strong>+226 70 25 70 22</strong></p>
         </div>
 
         <section>
             <h2>🌟 Témoignages clients</h2>
             <div class="testimonial">
-                <p>"Roland a fourni des services de traduction exceptionnels pour nos documents juridiques. Son attention aux détails et son respect des délais ont fait toute la différence pour notre partenariat international. L'adaptation culturelle de nos documents était particulièrement impressionnante."</p>
+                <p>"Roland a fourni des traductions juridiques exceptionnelles, avec une attention remarquable aux détails et un respect strict des délais. Son travail a grandement facilité nos partenariats internationaux."</p>
                 <p class="testimonial-author">- Client entreprise, Ouagadougou</p>
             </div>
-            
             <div class="testimonial">
-                <p>"Nous travaillons avec RB Traduction pour tous les besoins de documentation de notre ONG au Burkina Faso. Les traductions sont toujours précises, culturellement appropriées et livrées à temps. Nous le recommandons vivement pour le travail dans le secteur du développement."</p>
+                <p>"Nous faisons confiance à RB Traduction pour tous nos besoins de traduction. Ses traductions sont toujours précises, culturellement adaptées et livrées à temps. Un partenaire indispensable pour notre ONG."</p>
                 <p class="testimonial-author">- Directeur de programme ONG</p>
             </div>
         </section>
 
         <footer>
-            <p>© <span class="current-year"></span> RB Traduction | Roland Baghnyan | Numéro d'enregistrement : BFOUA2013A611</p>
-            <p>Traducteur et Interprète Professionnel | Basé à Ouagadougou, Burkina Faso</p>
+            <p>© <span class="current-year"></span> RB Traduction | Roland Baghnyan | Numéro d'immatriculation : BFOUA2013A611</p>
+            <p>Traducteur et interprète professionnel | Basé à Ouagadougou, Burkina Faso</p>
         </footer>
     </div>
 
     <!-- English Content -->
     <div id="en-content" class="lang-content">
-        <header>
+        <header class="main-header">
             <img src="https://i.imgur.com/JXO3mc5.png" alt="RB Traduction Logo" class="logo">
             <h1>RB Traduction</h1>
-            <h2>Professional Translation & Interpreting Services by Roland Baghnyan</h2>
+            <h2>Professional Translation & Interpreting Services<br>by Roland Baghnyan</h2>
             <p class="tagline">Bridging Language Gaps for Businesses & Institutions in Burkina Faso and Beyond</p>
         </header>
 
@@ -422,17 +477,16 @@
         <div class="cta-box">
             <h2>📞 Contact Me Today!</h2>
             <ul class="contact-list">
-                <li><strong>Phone/WhatsApp:</strong> <a href="https://wa.me/22670257022">+226 70 25 70 22</a></li>
-                <li><strong>Email:</strong> <a href="mailto:rolandbagh@gmail.com">rolandbagh@gmail.com</a></li>
-                <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/roland-baghnyan-a2079aa9/" target="_blank">Roland Baghnyan</a></li>
-                <li><strong>Facebook:</strong> <a href="https://www.facebook.com/rolandbagh" target="_blank">Roland Bagh</a></li>
+                <li><i class="fas fa-phone-alt"></i><i class="fab fa-whatsapp" style="margin-left: 5px; margin-right: 10px;"></i><strong>Phone/WhatsApp:</strong> <a href="https://wa.me/22670257022">+226 70 25 70 22</a></li>
+                <li><i class="fas fa-envelope"></i><strong>Email:</strong> <a href="mailto:rolandbagh@gmail.com">rolandbagh@gmail.com</a></li>
+                <li><i class="fab fa-linkedin"></i><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/roland-baghnyan-a2079aa9/" target="_blank">Roland Baghnyan</a></li>
+                <li><i class="fab fa-facebook"></i><strong>Facebook:</strong> <a href="https://www.facebook.com/rolandbagh" target="_blank">Roland Baghnyan</a></li>
             </ul>
-            <a href="https://wa.me/22670257022" class="whatsapp-button">Message on WhatsApp</a>
+            <a href="https://wa.me/22670257022" class="whatsapp-button"><i class="fab fa-whatsapp"></i> Message on WhatsApp</a>
         </div>
 
         <section>
             <h2>Services Offered</h2>
-            
             <div class="service-card">
                 <h3>1. Professional Document Translation</h3>
                 <ul>
@@ -442,7 +496,6 @@
                     <li><strong>Financial & Academic Translations</strong> - Bank documents, research papers, and educational materials</li>
                 </ul>
             </div>
-
             <div class="service-card">
                 <h3>2. Interpreting Services</h3>
                 <ul>
@@ -451,7 +504,6 @@
                     <li><strong>Consecutive & Simultaneous Interpretation</strong> - Adapted to your event requirements</li>
                 </ul>
             </div>
-
             <div class="service-card">
                 <h3>3. SEO-Optimized Multilingual Content</h3>
                 <ul>
@@ -465,17 +517,17 @@
         <section>
             <h2>Industries I Serve</h2>
             <div class="benefits-container">
-                <div class="benefit-item">
-                    <strong>Translation Agencies</strong> - High-volume projects with consistent quality and competitive rates
+                 <div class="benefit-item">
+                    <strong><span role="img" aria-label="briefcase">💼</span> Translation Agencies:</strong> High-volume projects with consistent quality and competitive rates.
                 </div>
                 <div class="benefit-item">
-                    <strong>Small Businesses & Informal Sector</strong> - Affordable solutions for startups and local entrepreneurs
+                    <strong><span role="img" aria-label="lightbulb">💡</span> Small Businesses & Informal Sector:</strong> Affordable solutions for startups and local entrepreneurs.
                 </div>
                 <div class="benefit-item">
-                    <strong>Institutions & NGOs</strong> - Culturally sensitive translations for development projects
+                    <strong><span role="img" aria-label="globe">🌍</span> Institutions & NGOs:</strong> Culturally sensitive translations for development projects.
                 </div>
                 <div class="benefit-item">
-                    <strong>Individuals</strong> - One-time document translations with quick delivery and personal attention
+                    <strong><span role="img" aria-label="person">👤</span> Individuals:</strong> One-time document translations with quick delivery and personal attention.
                 </div>
             </div>
         </section>
@@ -483,11 +535,11 @@
         <div class="cta-box">
             <h2>📩 Get a Free Quote Now!</h2>
             <p><em>"RB Traduction delivers fast, accurate translations tailored to your needs. Send me your document for a no-obligation quote!"</em></p>
-            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                <a href="https://wa.me/22670257022" class="whatsapp-button">WhatsApp Me</a>
-                <a href="mailto:rolandbagh@gmail.com" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold;">Email Me</a>
+            <div class="cta-button-container">
+                <a href="https://wa.me/22670257022" class="whatsapp-button"><i class="fab fa-whatsapp"></i> WhatsApp Me</a>
+                <a href="mailto:rolandbagh@gmail.com" class="email-action-button"><i class="fas fa-envelope"></i> Email Me</a>
             </div>
-            <p style="margin-top: 15px;">Or call directly: <strong>+226 70 25 70 22</strong></p>
+            <p style="margin-top: 25px; text-align:center;">Or call directly: <strong>+226 70 25 70 22</strong></p>
         </div>
 
         <section>
@@ -496,7 +548,6 @@
                 <p>"Roland provided exceptional translation services for our legal documents. His attention to detail and quick turnaround made all the difference for our international partnership. The cultural adaptation of our materials was particularly impressive."</p>
                 <p class="testimonial-author">- Business Client, Ouagadougou</p>
             </div>
-            
             <div class="testimonial">
                 <p>"We've been working with RB Traduction for all our NGO's documentation needs in Burkina Faso. The translations are always accurate, culturally appropriate, and delivered on time. Highly recommended for development sector work."</p>
                 <p class="testimonial-author">- NGO Program Director</p>
@@ -516,41 +567,102 @@
         });
 
         // Language switching function
-        function switchLanguage(lang) {
-            // Hide all language contents
+        function switchLanguage(lang, event) { 
             document.querySelectorAll('.lang-content').forEach(content => {
                 content.classList.remove('active');
             });
-            
-            // Show selected language content
             document.getElementById(lang + '-content').classList.add('active');
-            
-            // Update button states
             document.querySelectorAll('.language-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.classList.add('active');
             
-            // Update html lang attribute
+            if (event && event.target) {
+                 event.target.classList.add('active');
+            } else {
+                document.querySelectorAll('.language-btn').forEach(btn => {
+                    if (btn.getAttribute('onclick').includes(`'${lang}'`)) {
+                        btn.classList.add('active');
+                    }
+                });
+            }
             document.documentElement.lang = lang;
-            
-            // Store preference in localStorage
             localStorage.setItem('preferredLanguage', lang);
         }
 
-        // Check for saved language preference
         const savedLanguage = localStorage.getItem('preferredLanguage');
         if (savedLanguage) {
-            switchLanguage(savedLanguage);
+            switchLanguage(savedLanguage); 
+        } else {
+            const frButton = document.querySelector('.language-btn[onclick*="\'fr\'"]');
+            const enButton = document.querySelector('.language-btn[onclick*="\'en\'"]');
+            if (document.getElementById('fr-content').classList.contains('active')) {
+                if (frButton) frButton.classList.add('active');
+                if (enButton) enButton.classList.remove('active');
+            }
         }
 
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const frBenefitItems = document.querySelectorAll('#fr-content .benefit-item');
+            if (frBenefitItems.length > 1) {
+                const strongElRapides = frBenefitItems[1].querySelector('strong');
+                if (strongElRapides && strongElRapides.textContent.includes("Délais rapides et respectés</strong> - Délais rapides et respectés")) {
+                    strongElRapides.innerHTML = "✅ Délais rapides et respectés";
+                }
+            }
+            
+             document.querySelectorAll('.benefit-item').forEach(item => {
+                const strongTag = item.querySelector('strong');
+                if (strongTag) {
+                    let firstChildOfItem = item.firstChild;
+                    if (firstChildOfItem && firstChildOfItem.nodeType === Node.TEXT_NODE) {
+                        const textContent = firstChildOfItem.textContent.trim();
+                        if (textContent.startsWith('✅') || textContent.startsWith('💼') || textContent.startsWith('💡') || textContent.startsWith('🌍') || textContent.startsWith('👤')) {
+                            const emojiMatch = textContent.match(/^(\S+\s)/); 
+                            if (emojiMatch) {
+                                const emojiText = emojiMatch[0];
+                                strongTag.innerHTML = emojiText + strongTag.innerHTML; 
+                                firstChildOfItem.textContent = textContent.substring(emojiText.length).trim(); 
+                                if(firstChildOfItem.textContent.trim() === "") { 
+                                    item.removeChild(firstChildOfItem);
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            const frMainHeaderH2 = document.querySelector('#fr-content .main-header h2');
+            if (frMainHeaderH2 && frMainHeaderH2.innerHTML.includes(" par Roland Baghnyan") && !frMainHeaderH2.innerHTML.includes("<br>")) {
+                frMainHeaderH2.innerHTML = frMainHeaderH2.innerHTML.replace(" par Roland Baghnyan", "<br>par Roland Baghnyan");
+            }
+
+            document.querySelectorAll('section').forEach(section => {
+                const h2Text = section.querySelector('h2') ? section.querySelector('h2').textContent : "";
+                if (h2Text.includes("Nos secteurs d’activité") || h2Text.includes("Industries I Serve")) {
+                    const itemsInThisSection = section.querySelectorAll('.benefit-item');
+                    const sectorEmojis = ["💼", "💡", "🌍", "👤"];
+                    itemsInThisSection.forEach((item, idx) => {
+                        const strongEl = item.querySelector('strong');
+                        if (strongEl) {
+                            let currentTextInStrong = strongEl.innerHTML.replace(/<span[^>]*>.*?<\/span>\s*|\s*✅\s*|\s*💼\s*|\s*💡\s*|\s*🌍\s*|\s*👤\s*/gi, '').trim();
+                            let titlePart = currentTextInStrong.split(':')[0].trim();
+                            
+                            // Ensure the emoji (as span for accessibility) is at the beginning of the strong tag
+                            let emojiSpan = `<span role="img" aria-label="${titlePart.toLowerCase()} icon">${sectorEmojis[idx % sectorEmojis.length]}</span>`;
+                            strongEl.innerHTML = `${emojiSpan} ${titlePart}:`;
+                        }
+                    });
+                }
             });
         });
     </script>
